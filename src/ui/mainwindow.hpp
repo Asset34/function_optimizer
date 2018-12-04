@@ -10,6 +10,7 @@ class QHBoxLayout;
 class QLabel;
 class QLineEdit;
 class QPushButton;
+class AlgorithmWidget;
 
 class MainWindow : public QMainWindow
 {
@@ -26,6 +27,8 @@ private:
 
     QPushButton *m_evaluateButton;
     QPushButton *m_optimizeButton;
+
+    AlgorithmWidget *m_algorithmWidget;
 
     MathParser *m_parser;
 

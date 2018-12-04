@@ -8,7 +8,7 @@
 
 #include <Parser/Functions/function.hpp>
 
-#include <QDebug>
+#include "algorithmwidget.hpp"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -26,10 +26,14 @@ MainWindow::MainWindow(QWidget *parent)
     m_controlLayout->addWidget(m_evaluateButton);
     m_controlLayout->addWidget(m_optimizeButton);
 
+    // Create algorithm widget
+    m_algorithmWidget = new AlgorithmWidget;
+
     // Create main layout
     m_mainLayout = new QVBoxLayout;
     m_mainLayout->setContentsMargins(0, 0, 0, 0);
     m_mainLayout->addWidget(m_functionLabel);
+    m_mainLayout->addWidget(m_algorithmWidget);
     m_mainLayout->addLayout(m_controlLayout);
 
     // Create parser
@@ -48,7 +52,11 @@ MainWindow::MainWindow(QWidget *parent)
 
 void MainWindow::evaluate()
 {
+//    QString funcStr = m_functionLabel->text();
+//    Function *func = m_parser->parse(funcStr);
 
+
+//    delete func;
 }
 
 void MainWindow::optimize()

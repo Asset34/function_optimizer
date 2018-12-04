@@ -98,7 +98,9 @@ SOURCES += \
     src/Parser/Parser/Tokens/unaryoptoken.cpp \
     src/Parser/Parser/Tokens/variabletoken.cpp \
     src/Parser/Entities/vector.cpp \
-    src/Parser/Parser/ExpTree/ExpNodes/expnode.cpp
+    src/Parser/Parser/ExpTree/ExpNodes/expnode.cpp \
+    src/algorithms/geneticalgorithm.cpp \
+    src/ui/algorithmwidget.cpp
 
 HEADERS += \
         src/ui/mainwindow.hpp \
@@ -174,6 +176,9 @@ HEADERS += \
     src/Parser/Parser/Tokens/unaryoptoken.hpp \
     src/Parser/Parser/Tokens/variabletoken.hpp \
     src/Parser/Entities/vector.hpp \
-    src/Parser/Parser/ExpTree/ExpNodes/expnode.hpp
+    src/Parser/Parser/ExpTree/ExpNodes/expnode.hpp \
+    src/algorithms/optimizealgorithm.hpp \
+    src/algorithms/geneticalgorithm.hpp \
+    src/ui/algorithmwidget.hpp
 
 INCLUDEPATH += $$PWD/src
