@@ -12,7 +12,7 @@
 class MathParser
 {
 public:
-    Function *parse(const QString &exp);
+    Function parse(const QString &exp);
 
 private:
     /* Handlers */

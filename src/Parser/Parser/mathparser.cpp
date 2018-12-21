@@ -1,6 +1,6 @@
 #include "mathparser.hpp"
 
-Function *MathParser::parse(const QString &exp)
+Function MathParser::parse(const QString &exp)
 {
     // Handle
     QList<Token*> tokens = m_mathTokenizer.tokenize(exp);
@@ -8,7 +8,7 @@ Function *MathParser::parse(const QString &exp)
     tokens = m_mathRpnConverter.convert(tokens);
     ExpNode *expTree = m_mathAstCreator.create(tokens);
 
-    // Create function
     QVector<QString> variables = m_mathAstCreator.getVariablesList().toVector();
-    return new Function(exp, expTree, variables);
+
+    return Function(exp, expTree, variables);
 }
