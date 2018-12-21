@@ -1,9 +1,10 @@
 #include "algorithmwidget.hpp"
 
-#include <QHBoxLayout>
+#include <QVBoxLayout>
 #include <QFormLayout>
 #include <QSpinBox>
 #include <QLabel>
+#include <QFrame>
 
 #include <algorithms/geneticalgorithm.hpp>
 
@@ -36,10 +37,15 @@ AlgorithmWidget::AlgorithmWidget(QWidget *parent)
     m_resultLayout->addRow("Value:"     , m_valueLabel);
     m_resultLayout->addRow("Iterations:", m_iterationsLabel);
 
+    // Create separator
+    m_separator = new QFrame;
+    m_separator->setFrameShape(QFrame::Shape::HLine);
+
     // Create main layout
-    m_mainLayout = new QHBoxLayout;
+    m_mainLayout = new QVBoxLayout;
     m_mainLayout->setContentsMargins(0, 0, 0, 0);
     m_mainLayout->addLayout(m_inputLayout);
+    m_mainLayout->addWidget(m_separator);
     m_mainLayout->addLayout(m_resultLayout);
 
     // Create algorithm
@@ -54,7 +60,7 @@ AlgorithmWidget::~AlgorithmWidget()
     delete m_algorithm;
 }
 
-void AlgorithmWidget::optimize(const Function *func)
+void AlgorithmWidget::optimize(const Function &func)
 {
     // Set parameters
     OptimizeAlgorithm::Parameters p;
@@ -65,8 +71,8 @@ void AlgorithmWidget::optimize(const Function *func)
     OptimizeAlgorithm::Result result = m_algorithm->run(func, p);
 
     // Set results
-    QString valueStr = QString::number(result.value);
+//    QString valueStr = QString::number(result.value);
     QString iterationsStr = QString::number(result.iterations);
-    m_valueLabel->setText(valueStr);
+//    m_valueLabel->setText(valueStr);
     m_iterationsLabel->setText(iterationsStr);
 }

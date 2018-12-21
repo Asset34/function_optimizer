@@ -8,7 +8,7 @@ class OptimizeAlgorithm
 public:
     struct Result
     {
-        double value;
+        std::vector<double> values;
         int iterations;
     };
 
@@ -20,7 +20,7 @@ public:
 
     virtual ~OptimizeAlgorithm() = default;
 
-    virtual Result run(const Function *func, const Parameters &p) = 0;
+    virtual Result run(const Function &func, const Parameters &p) = 0;
 
 };
 

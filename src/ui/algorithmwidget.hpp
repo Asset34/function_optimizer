@@ -6,10 +6,11 @@
 #include <algorithms/optimizealgorithm.hpp>
 #include <Parser/Functions/function.hpp>
 
-class QHBoxLayout;
+class QVBoxLayout;
 class QFormLayout;
 class QSpinBox;
 class QLabel;
+class QFrame;
 
 class AlgorithmWidget : public QWidget
 {
@@ -20,10 +21,10 @@ public:
     virtual ~AlgorithmWidget();
 
 public slots:
-    void optimize(const Function *func);
+    void optimize(const Function &func);
 
 private:
-    QHBoxLayout *m_mainLayout;
+    QVBoxLayout *m_mainLayout;
     QFormLayout *m_inputLayout;
     QFormLayout *m_resultLayout;
 
@@ -32,6 +33,8 @@ private:
 
     QLabel *m_valueLabel;
     QLabel *m_iterationsLabel;
+
+    QFrame *m_separator;
 
     OptimizeAlgorithm *m_algorithm;
 

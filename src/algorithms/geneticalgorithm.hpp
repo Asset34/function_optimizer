@@ -6,9 +6,10 @@
 class GeneticAlgorithm : public OptimizeAlgorithm
 {
 public:
-    virtual Result run(const Function *func, const Parameters &p) override;
+    virtual Result run(const Function &func, const Parameters &p) override;
 
 private:
+
 
 };
 
