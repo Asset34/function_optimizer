@@ -100,7 +100,10 @@ SOURCES += \
     src/Parser/Entities/vector.cpp \
     src/Parser/Parser/ExpTree/ExpNodes/expnode.cpp \
     src/algorithms/geneticalgorithm.cpp \
-    src/ui/algorithmwidget.cpp
+    src/ui/algorithmwidget.cpp \
+    src/ui/algorithm_control_widgets/algorithmcontrolwidget.cpp \
+    src/ui/algorithm_control_widgets/geneticalgorithmcontrolwidget.cpp \
+    src/utills/randomgenerator.cpp
 
 HEADERS += \
         src/ui/mainwindow.hpp \
@@ -179,6 +182,9 @@ HEADERS += \
     src/Parser/Parser/ExpTree/ExpNodes/expnode.hpp \
     src/algorithms/optimizealgorithm.hpp \
     src/algorithms/geneticalgorithm.hpp \
-    src/ui/algorithmwidget.hpp
+    src/ui/algorithmwidget.hpp \
+    src/ui/algorithm_control_widgets/algorithmcontrolwidget.hpp \
+    src/ui/algorithm_control_widgets/geneticalgorithmcontrolwidget.hpp \
+    src/utills/randomgenerator.hpp
 
 INCLUDEPATH += $$PWD/src
