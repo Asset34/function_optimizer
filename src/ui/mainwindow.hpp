@@ -5,11 +5,14 @@
 
 #include <parser/Parser/mathparser.hpp>
 
+#include <algorithms/optimizealgorithm.hpp>
+
 class QVBoxLayout;
-class QHBoxLayout;
-class QLabel;
+class QFormLayout;
 class QLineEdit;
 class QPushButton;
+class QComboBox;
+class InputFunctionBox;
 class AlgorithmWidget;
 
 class MainWindow : public QMainWindow
@@ -20,7 +23,19 @@ public:
     explicit MainWindow(QWidget *parent = 0);
 
 private:
+    QVBoxLayout *m_mainLayout;
+    QFormLayout *m_toplayout;
 
+    InputFunctionBox *m_inputFunctionBox;
+
+    QComboBox *m_algorithmComboBox;
+
+    QPushButton *m_optimizeButton;
+
+    AlgorithmWidget *m_algorithmWidget;
+
+private slots:
+    void optimize();
 
 };
 
