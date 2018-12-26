@@ -2,48 +2,34 @@
 
 #include "ui/mainwindow.hpp"
 
-#include <QtDataVisualization>
+//#include <QtDataVisualization>
 
-using namespace QtDataVisualization;
+//using namespace QtDataVisualization;
 
-double f(double x1, double x2) {
-    return x1*x1 + x2*x2;
-}
+//double f(double x1, double x2) {
+//    return x1*x1 + x2*x2;
+//}
+
+#include <ui/functiondrawer.hpp>
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
 
-//    MainWindow w;
-//    w.resize(400, 100);
-//    w.show();
+    MathParser parser;
+    Function func = parser.parse("x^2 - y^2");
 
-    Q3DSurface surface;
+    FunctionDrawer drawer;
+    drawer.setFunction(func, -100.0, 100.0, -100.0, 100.0);
+    drawer.resize(500, 500);
+    drawer.show();
 
-    double min = -100.0;
-    double max = 100.0;
-    double step = 0.1;
+    QVector<QVector3D> marks;
+    marks << QVector3D(5.0, 3.0, -2.0);
+    marks << QVector3D(12.2, 55.2, 3.0);
+    marks << QVector3D(-5.0, 12.5, 17.0);
+    drawer.setMarks(marks);
 
-    QSurfaceDataRow *row;
-    QSurfaceDataArray *data = new QSurfaceDataArray;
-    QVector3D vec;
-    for (int x = min; x < max; x += step) {
-        row = new QSurfaceDataRow;
-        for (int y = min; y < max; y += step) {
-            vec.setX(x);
-            vec.setY(y);
-            vec.setZ(f(x, y));
-
-            *row << vec;
-        }
-
-        *data << row;
-    }
-
-    QSurface3DSeries *series = new QSurface3DSeries;
-    series->dataProxy()->resetArray(data);
-    surface.addSeries(series);
-    surface.show();
 
     return a.exec();
 }

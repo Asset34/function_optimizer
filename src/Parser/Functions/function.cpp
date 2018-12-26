@@ -32,6 +32,21 @@ double Function::operator()(const Vector &vec) const
     return m_expTree->evaluate(values);
 }
 
+double Function::operator()(const std::vector<double> &vec) const
+{
+    if (vec.size() != m_variables.size()) {
+        throw std::invalid_argument("Incorrect number of the arguments");
+    }
+
+    Values values;
+
+    for (int i = 0; i < vec.size(); i++) {
+        values.assign(m_variables[i], vec[i]);
+    }
+
+    return m_expTree->evaluate(values);
+}
+
 int Function::getSize() const
 {
     return m_variables.size();

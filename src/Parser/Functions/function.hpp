@@ -17,6 +17,7 @@ public:
     virtual ~Function();
 
     virtual double operator()(const Vector &vec) const;
+    virtual double operator()(const std::vector<double> &vec) const;
 
     int getSize() const;
     const QVector<QString> &getVariables() const;

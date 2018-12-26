@@ -103,7 +103,8 @@ SOURCES += \
     src/ui/algorithmwidget.cpp \
     src/ui/algorithm_control_widgets/algorithmcontrolwidget.cpp \
     src/ui/algorithm_control_widgets/geneticalgorithmcontrolwidget.cpp \
-    src/utills/randomgenerator.cpp
+    src/utills/randomgenerator.cpp \
+    src/ui/functiondrawer.cpp
 
 HEADERS += \
         src/ui/mainwindow.hpp \
@@ -185,6 +186,10 @@ HEADERS += \
     src/ui/algorithmwidget.hpp \
     src/ui/algorithm_control_widgets/algorithmcontrolwidget.hpp \
     src/ui/algorithm_control_widgets/geneticalgorithmcontrolwidget.hpp \
-    src/utills/randomgenerator.hpp
+    src/utills/randomgenerator.hpp \
+    src/ui/functiondrawer.hpp
 
 INCLUDEPATH += $$PWD/src
+
+RESOURCES += \
+    items.qrc
