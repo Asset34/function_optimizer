@@ -1,14 +1,14 @@
-#include "intervallistbox.hpp"
+#include "IntervalListBox.hpp"
 
 #include <QVBoxLayout>
 
-IntervallistBox::IntervallistBox(const QVector<QString> &names, QWidget *parent)
+IntervalListBox::IntervalListBox(const QVector<QString> &names, QWidget *parent)
     : QWidget(parent)
 {
     initIntervals(names);
 }
 
-void IntervallistBox::initIntervals(const QVector<QString> &names)
+void IntervalListBox::initIntervals(const QVector<QString> &names)
 {
     // Create new layout
     QVBoxLayout *layout = new QVBoxLayout;
@@ -29,7 +29,7 @@ void IntervallistBox::initIntervals(const QVector<QString> &names)
     setLayout(layout);
 }
 
-QVector<Interval> IntervallistBox::getIntervals() const
+QVector<Interval> IntervalListBox::getIntervals() const
 {
     QVector<Interval> intervals;
     intervals.reserve(m_intervalBoxes.size());

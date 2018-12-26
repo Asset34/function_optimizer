@@ -5,12 +5,12 @@
 
 #include "intervalbox.hpp"
 
-class IntervallistBox : public QWidget
+class IntervalListBox : public QWidget
 {
     Q_OBJECT
 
 public:
-    explicit IntervallistBox(
+    explicit IntervalListBox(
             const QVector<QString> &names = {},
             QWidget *parent = nullptr
             );

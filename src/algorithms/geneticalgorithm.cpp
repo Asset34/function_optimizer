@@ -8,54 +8,54 @@
 
 OptimizeAlgorithm::Result GeneticAlgorithm::run(const Function &func, const Parameters &p)
 {
-    qDebug() << p.populationSize;
+//    qDebug() << p.populationSize;
 
-    double val;
+//    double val;
 
-    // Generate initial population
-    Population curPopulation(p.populationSize, Chromosome(func.getSize()));
-    for (int i = 0; i < p.populationSize; i++) {
-        for (int j = 0; j < func.getSize(); j++) {
-            val = RandomGenerator::generateDouble(p.initMin, p.initMax);
-            curPopulation[i][j] = val;
-        }
-    }
-    qDebug() << "INITIAL_POPULATION:";
-    qDebug() << curPopulation;
+//    // Generate initial population
+//    Population curPopulation(p.populationSize, Chromosome(func.getSize()));
+//    for (int i = 0; i < p.populationSize; i++) {
+//        for (int j = 0; j < func.getSize(); j++) {
+//            val = RandomGenerator::generateDouble(p.initMin, p.initMax);
+//            curPopulation[i][j] = val;
+//        }
+//    }
+//    qDebug() << "INITIAL_POPULATION:";
+//    qDebug() << curPopulation;
 
-    Population nextPopulation(p.populationSize, Chromosome(func.getSize()));
-    Chromosome parent1, parent2, descendant;
-    for (int i = 0; i < p.maxIterations; i++) {
-        qDebug() << "ITERATON " << i << " --------------------------------------";
-        for (int j = 0; j < curPopulation.size(); j++) {
-            parent1 = chooseParent(curPopulation, func);
-            parent2 = chooseParent(curPopulation, func);
+//    Population nextPopulation(p.populationSize, Chromosome(func.getSize()));
+//    Chromosome parent1, parent2, descendant;
+//    for (int i = 0; i < p.maxIterations; i++) {
+//        qDebug() << "ITERATON " << i << " --------------------------------------";
+//        for (int j = 0; j < curPopulation.size(); j++) {
+//            parent1 = chooseParent(curPopulation, func);
+//            parent2 = chooseParent(curPopulation, func);
 
-            descendant = crossover(parent1, parent2, func, p);
-            if (RandomGenerator::generateAction(p.pmut)) {
-                mutation(descendant, p);
-            }
+//            descendant = crossover(parent1, parent2, func, p);
+//            if (RandomGenerator::generateAction(p.pmut)) {
+//                mutation(descendant, p);
+//            }
 
-            nextPopulation[j] = descendant;
-        }
-        qDebug() << "NEXT_POPULATION:";
-        qDebug() << nextPopulation;
+//            nextPopulation[j] = descendant;
+//        }
+//        qDebug() << "NEXT_POPULATION:";
+//        qDebug() << nextPopulation;
 
-        curPopulation = nextPopulation;
-    }
+//        curPopulation = nextPopulation;
+//    }
 
-    // Find best chromosome in last population
-    Chromosome min = *std::min_element(curPopulation.begin(), curPopulation.end(),
-                     [&func](const Chromosome &c1, const Chromosome &c2) -> bool{
-        if (func(Vector(c1)) < func(Vector(c2))) {
-            return true;
-        }
-        else {
-            return false;
-        }
-    });
+//    // Find best chromosome in last population
+//    Chromosome min = *std::min_element(curPopulation.begin(), curPopulation.end(),
+//                     [&func](const Chromosome &c1, const Chromosome &c2) -> bool{
+//        if (func(Vector(c1)) < func(Vector(c2))) {
+//            return true;
+//        }
+//        else {
+//            return false;
+//        }
+//    });
 
-    return {min, p.maxIterations};
+//    return {min, p.maxIterations};
 }
 
 std::string GeneticAlgorithm::getName() const

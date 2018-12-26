@@ -24,8 +24,8 @@ public:
         double initMin;
         double initMax;
         double crossoverFactor;
+        double mutationChance;
         double mutationMax;
-        double pmut;
     };
 
     virtual ~OptimizeAlgorithm() = default;
