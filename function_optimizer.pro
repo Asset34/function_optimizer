@@ -8,7 +8,7 @@ QT       += core gui datavisualization
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-TARGET = genetic_algorithm
+TARGET = function_optimizer
 TEMPLATE = app
 
 # The following define makes your compiler emit warnings if you use
@@ -100,9 +100,6 @@ SOURCES += \
     src/Parser/Entities/vector.cpp \
     src/Parser/Parser/ExpTree/ExpNodes/expnode.cpp \
     src/algorithms/geneticalgorithm.cpp \
-    src/ui/algorithmwidget.cpp \
-    src/ui/algorithm_control_widgets/algorithmcontrolwidget.cpp \
-    src/ui/algorithm_control_widgets/geneticalgorithmcontrolwidget.cpp \
     src/utills/randomgenerator.cpp \
     src/ui/functiondrawer.cpp \
     src/ui/widgets/vectorlistwidget.cpp
@@ -184,9 +181,6 @@ HEADERS += \
     src/Parser/Parser/ExpTree/ExpNodes/expnode.hpp \
     src/algorithms/optimizealgorithm.hpp \
     src/algorithms/geneticalgorithm.hpp \
-    src/ui/algorithmwidget.hpp \
-    src/ui/algorithm_control_widgets/algorithmcontrolwidget.hpp \
-    src/ui/algorithm_control_widgets/geneticalgorithmcontrolwidget.hpp \
     src/utills/randomgenerator.hpp \
     src/ui/functiondrawer.hpp \
     src/ui/widgets/vectorlistwidget.hpp
