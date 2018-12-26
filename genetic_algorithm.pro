@@ -104,7 +104,8 @@ SOURCES += \
     src/ui/algorithm_control_widgets/algorithmcontrolwidget.cpp \
     src/ui/algorithm_control_widgets/geneticalgorithmcontrolwidget.cpp \
     src/utills/randomgenerator.cpp \
-    src/ui/functiondrawer.cpp
+    src/ui/functiondrawer.cpp \
+    src/ui/widgets/vectorlistwidget.cpp
 
 HEADERS += \
         src/ui/mainwindow.hpp \
@@ -187,7 +188,8 @@ HEADERS += \
     src/ui/algorithm_control_widgets/algorithmcontrolwidget.hpp \
     src/ui/algorithm_control_widgets/geneticalgorithmcontrolwidget.hpp \
     src/utills/randomgenerator.hpp \
-    src/ui/functiondrawer.hpp
+    src/ui/functiondrawer.hpp \
+    src/ui/widgets/vectorlistwidget.hpp
 
 INCLUDEPATH += $$PWD/src
 
