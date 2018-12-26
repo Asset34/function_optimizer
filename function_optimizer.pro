@@ -102,7 +102,10 @@ SOURCES += \
     src/algorithms/geneticalgorithm.cpp \
     src/utills/randomgenerator.cpp \
     src/ui/functiondrawer.cpp \
-    src/ui/widgets/vectorlistwidget.cpp
+    src/ui/widgets/vectorlistwidget.cpp \
+    src/ui/algorithm_widgets/geneticalgorithmwidget.cpp \
+    src/ui/algorithm_widgets/algorithmwidget.cpp \
+    src/ui/widgets/intervalbox.cpp
 
 HEADERS += \
         src/ui/mainwindow.hpp \
@@ -183,7 +186,10 @@ HEADERS += \
     src/algorithms/geneticalgorithm.hpp \
     src/utills/randomgenerator.hpp \
     src/ui/functiondrawer.hpp \
-    src/ui/widgets/vectorlistwidget.hpp
+    src/ui/widgets/vectorlistwidget.hpp \
+    src/ui/algorithm_widgets/algorithmwidget.hpp \
+    src/ui/algorithm_widgets/geneticalgorithmwidget.hpp \
+    src/ui/widgets/intervalbox.hpp
 
 INCLUDEPATH += $$PWD/src
 
