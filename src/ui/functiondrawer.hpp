@@ -6,7 +6,7 @@
 
 #include <QVector>
 
-#include <Parser/Functions/function.hpp>
+#include <parser/Functions/function.hpp>
 
 using namespace QtDataVisualization;
 

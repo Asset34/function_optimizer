@@ -3,7 +3,7 @@
 
 #include <QMainWindow>
 
-#include <Parser/Parser/mathparser.hpp>
+#include <parser/Parser/mathparser.hpp>
 
 class QVBoxLayout;
 class QHBoxLayout;
@@ -20,21 +20,7 @@ public:
     explicit MainWindow(QWidget *parent = 0);
 
 private:
-    QVBoxLayout *m_mainLayout;
-    QVBoxLayout *m_controlLayout;
 
-    QLineEdit *m_functionLabel;
-
-    QPushButton *m_evaluateButton;
-    QPushButton *m_optimizeButton;
-
-    AlgorithmWidget *m_algorithmWidget;
-
-    MathParser *m_parser;
-
-private slots:
-    void evaluate();
-    void optimize();
 
 };
 
