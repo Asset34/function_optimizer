@@ -9,12 +9,13 @@
 #include <QString>
 #include <QVector>
 
+#include <memory>
+
 class Function
 {
 public:
     Function();
     Function(const QString &exp, ExpNode *expTree, QVector<QString> variables);
-    virtual ~Function();
 
     virtual double operator()(const Vector &vec) const;
     virtual double operator()(const std::vector<double> &vec) const;
@@ -25,8 +26,9 @@ public:
 
 private:
     QString m_exp;
-    ExpNode *m_expTree;
-    QVector<QString> m_variables;
+//    ExpNode *m_expTree;
+    std::shared_ptr<ExpNode> m_expTree;
+    QVector<QString> m_variables;    
 };
 
 #endif // FUNCTION_HPP

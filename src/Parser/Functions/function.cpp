@@ -12,11 +12,6 @@ Function::Function(const QString &exp, ExpNode *expTree, QVector<QString> variab
 {
 }
 
-Function::~Function()
-{
-    delete m_expTree;
-}
-
 double Function::operator()(const Vector &vec) const
 {
     if (vec.getSize() != m_variables.size()) {
