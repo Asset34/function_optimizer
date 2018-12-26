@@ -106,7 +106,8 @@ SOURCES += \
     src/ui/algorithm_widgets/geneticalgorithmwidget.cpp \
     src/ui/algorithm_widgets/algorithmwidget.cpp \
     src/ui/widgets/intervalbox.cpp \
-    src/ui/widgets/intervallistbox.cpp
+    src/ui/widgets/intervallistbox.cpp \
+    src/ui/widgets/inputfunctionbox.cpp
 
 HEADERS += \
         src/ui/mainwindow.hpp \
@@ -191,7 +192,8 @@ HEADERS += \
     src/ui/algorithm_widgets/algorithmwidget.hpp \
     src/ui/algorithm_widgets/geneticalgorithmwidget.hpp \
     src/ui/widgets/intervalbox.hpp \
-    src/ui/widgets/intervallistbox.hpp
+    src/ui/widgets/intervallistbox.hpp \
+    src/ui/widgets/inputfunctionbox.hpp
 
 INCLUDEPATH += $$PWD/src
 
