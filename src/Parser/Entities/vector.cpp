@@ -6,7 +6,12 @@ Vector::Vector(double coord)
 }
 
 Vector::Vector(const QVector<double> &coords)
-    :m_coords(coords)
+    : m_coords(coords)
+{
+}
+
+Vector::Vector(const std::vector<double> &coords)
+    : m_coords(QVector<double>::fromStdVector(coords))
 {
 }
 

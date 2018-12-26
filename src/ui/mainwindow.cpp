@@ -10,6 +10,8 @@
 
 #include "algorithmwidget.hpp"
 
+#include <QDebug>
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
 {
@@ -61,5 +63,11 @@ void MainWindow::evaluate()
 
 void MainWindow::optimize()
 {
-    // TODO
+    QString funcStr = m_functionLabel->text();
+    Function func = m_parser->parse(funcStr);
+
+//    qDebug() << "FUNC_SIZE" << func.getSize();
+//    qDebug() << "FUNC_VARIABLES" << func.getVariables();
+
+    m_algorithmWidget->optimize(func);
 }

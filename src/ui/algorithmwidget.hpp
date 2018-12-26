@@ -8,9 +8,12 @@
 
 class QVBoxLayout;
 class QFormLayout;
+class QComboBox;
 class QSpinBox;
 class QLabel;
 class QFrame;
+
+#include "algorithm_control_widgets/algorithmcontrolwidget.hpp"
 
 class AlgorithmWidget : public QWidget
 {
@@ -24,19 +27,25 @@ public slots:
     void optimize(const Function &func);
 
 private:
+    void resetAlgorithm();
+    void resetAlgorithmControlWidget();
+
     QVBoxLayout *m_mainLayout;
-    QFormLayout *m_inputLayout;
     QFormLayout *m_resultLayout;
 
-    QSpinBox *m_maxIterationsSpinBox;
-    QSpinBox *m_sizeSpinBox;
+    QComboBox *m_algorithmComboBox;
 
     QLabel *m_valueLabel;
     QLabel *m_iterationsLabel;
 
     QFrame *m_separator;
 
+    AlgorithmControlWidget *m_algorithmControlWidget;
+
     OptimizeAlgorithm *m_algorithm;
+
+private slots:
+    void setAlgorithmControlWidget();
 
 };
 

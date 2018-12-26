@@ -18,6 +18,7 @@ public:
 
     virtual double operator()(const Vector &vec) const;
 
+    int getSize() const;
     const QVector<QString> &getVariables() const;
     const QString &getExp() const;
 

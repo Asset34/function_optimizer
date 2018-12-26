@@ -6,10 +6,13 @@
 #include <QtMath>
 #include <QVector>
 
+#include <vector>
+
 class Vector
 {
 public:
     explicit Vector(const QVector<double> &coords);
+    explicit Vector(const std::vector<double> &coords);
     Vector(int size, double *coords);
     Vector(double coord = 0); // "explicit" is missing intentionally
     Vector(const Vector &vec);

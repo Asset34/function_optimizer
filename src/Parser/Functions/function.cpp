@@ -32,6 +32,11 @@ double Function::operator()(const Vector &vec) const
     return m_expTree->evaluate(values);
 }
 
+int Function::getSize() const
+{
+    return m_variables.size();
+}
+
 const QVector<QString> &Function::getVariables() const
 {
     return m_variables;
