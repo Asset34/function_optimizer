@@ -99,7 +99,6 @@ SOURCES += \
     src/parser/Parser/Tokens/variabletoken.cpp \
     src/parser/Entities/vector.cpp \
     src/parser/Parser/ExpTree/ExpNodes/expnode.cpp \
-    src/algorithms/geneticalgorithm.cpp \
     src/utills/randomgenerator.cpp \
     src/ui/functiondrawer.cpp \
     src/ui/widgets/vectorlistwidget.cpp \
@@ -186,8 +185,6 @@ HEADERS += \
     src/parser/Parser/Tokens/variabletoken.hpp \
     src/parser/Entities/vector.hpp \
     src/parser/Parser/ExpTree/ExpNodes/expnode.hpp \
-    src/algorithms/optimizealgorithm.hpp \
-    src/algorithms/geneticalgorithm.hpp \
     src/utills/randomgenerator.hpp \
     src/ui/functiondrawer.hpp \
     src/ui/widgets/vectorlistwidget.hpp \
@@ -199,7 +196,8 @@ HEADERS += \
     src/parameter_list_widget/parameterized_algorithm_base/Parameters/parameter.hpp \
     src/parameter_list_widget/parameterized_algorithm_base/Parameters/realparameter.hpp \
     src/parameter_list_widget/parameterized_algorithm_base/algorithm.hpp \
-    src/parameter_list_widget/parameterized_algorithm_base/parametervisitor.hpp
+    src/parameter_list_widget/parameterized_algorithm_base/parametervisitor.hpp \
+    src/algorithms/optimizationalgorithm.hpp
 
 INCLUDEPATH += $$PWD/src
 
