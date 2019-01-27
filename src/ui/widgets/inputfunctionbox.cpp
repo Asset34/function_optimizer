@@ -26,9 +26,14 @@ InputFunctionBox::InputFunctionBox(QWidget *parent)
     connect(m_parsePushButton, &QPushButton::clicked, this, &InputFunctionBox::parse);
 }
 
+Function InputFunctionBox::getFunction() const
+{
+    return m_function;
+}
+
 void InputFunctionBox::parse()
 {
-    Function func = m_parser.parse(m_functionLineEdit->text());
+    m_function = m_parser.parse(m_functionLineEdit->text());
 
-    emit parsed(func);
+    emit parsed();
 }

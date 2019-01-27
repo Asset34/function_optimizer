@@ -18,6 +18,8 @@ class InputFunctionBox : public QWidget
 public:
     explicit InputFunctionBox(QWidget *parent = nullptr);
 
+    Function getFunction() const;
+
 private:
     QHBoxLayout *m_layout;
     QLineEdit *m_functionLineEdit;
@@ -25,11 +27,13 @@ private:
 
     MathParser m_parser;
 
+    Function m_function;
+
 private slots:
     void parse();
 
 signals:
-    void parsed(const Function &func);
+    void parsed();
 
 };
 
