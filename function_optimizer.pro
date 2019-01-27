@@ -102,7 +102,7 @@ SOURCES += \
     src/utills/randomgenerator.cpp \
     src/ui/functiondrawer.cpp \
     src/ui/widgets/vectorlistwidget.cpp \
-    src/ui/widgets/inputfunctionbox.cpp \
+    src/ui/boxes/inputfunctionbox.cpp \
     src/parameter_list_widget/guicreatingvisitor.cpp \
     src/parameter_list_widget/parameterlistwidget.cpp \
     src/parameter_list_widget/parameterized_algorithm_base/Parameters/flagparameter.cpp \
@@ -188,7 +188,7 @@ HEADERS += \
     src/utills/randomgenerator.hpp \
     src/ui/functiondrawer.hpp \
     src/ui/widgets/vectorlistwidget.hpp \
-    src/ui/widgets/inputfunctionbox.hpp \
+    src/ui/boxes/inputfunctionbox.hpp \
     src/parameter_list_widget/guicreatingvisitor.hpp \
     src/parameter_list_widget/parameterlistwidget.hpp \
     src/parameter_list_widget/parameterized_algorithm_base/Parameters/flagparameter.hpp \

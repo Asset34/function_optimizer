@@ -6,10 +6,9 @@
 #include <parser/Functions/function.hpp>
 #include <parser/Parser/mathparser.hpp>
 
-class QHBoxLayout;
+class QFormLayout;
 class QLabel;
 class QLineEdit;
-class QPushButton;
 
 class InputFunctionBox : public QWidget
 {
@@ -18,22 +17,13 @@ class InputFunctionBox : public QWidget
 public:
     explicit InputFunctionBox(QWidget *parent = nullptr);
 
-    Function getFunction() const;
+    Function getFunction();
 
 private:
-    QHBoxLayout *m_layout;
+    QFormLayout *m_layout;
     QLineEdit *m_functionLineEdit;
-    QPushButton *m_parsePushButton;
 
     MathParser m_parser;
-
-    Function m_function;
-
-private slots:
-    void parse();
-
-signals:
-    void parsed();
 
 };
 
