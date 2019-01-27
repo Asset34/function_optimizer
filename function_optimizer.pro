@@ -103,11 +103,13 @@ SOURCES += \
     src/utills/randomgenerator.cpp \
     src/ui/functiondrawer.cpp \
     src/ui/widgets/vectorlistwidget.cpp \
-    src/ui/algorithm_widgets/geneticalgorithmwidget.cpp \
-    src/ui/algorithm_widgets/algorithmwidget.cpp \
-    src/ui/widgets/intervalbox.cpp \
-    src/ui/widgets/intervallistbox.cpp \
-    src/ui/widgets/inputfunctionbox.cpp
+    src/ui/widgets/inputfunctionbox.cpp \
+    src/parameter_list_widget/guicreatingvisitor.cpp \
+    src/parameter_list_widget/parameterlistwidget.cpp \
+    src/parameter_list_widget/parameterized_algorithm_base/Parameters/flagparameter.cpp \
+    src/parameter_list_widget/parameterized_algorithm_base/Parameters/intparameter.cpp \
+    src/parameter_list_widget/parameterized_algorithm_base/Parameters/parameter.cpp \
+    src/parameter_list_widget/parameterized_algorithm_base/Parameters/realparameter.cpp
 
 HEADERS += \
         src/ui/mainwindow.hpp \
@@ -189,11 +191,15 @@ HEADERS += \
     src/utills/randomgenerator.hpp \
     src/ui/functiondrawer.hpp \
     src/ui/widgets/vectorlistwidget.hpp \
-    src/ui/algorithm_widgets/algorithmwidget.hpp \
-    src/ui/algorithm_widgets/geneticalgorithmwidget.hpp \
-    src/ui/widgets/intervalbox.hpp \
-    src/ui/widgets/intervallistbox.hpp \
-    src/ui/widgets/inputfunctionbox.hpp
+    src/ui/widgets/inputfunctionbox.hpp \
+    src/parameter_list_widget/guicreatingvisitor.hpp \
+    src/parameter_list_widget/parameterlistwidget.hpp \
+    src/parameter_list_widget/parameterized_algorithm_base/Parameters/flagparameter.hpp \
+    src/parameter_list_widget/parameterized_algorithm_base/Parameters/intparameter.hpp \
+    src/parameter_list_widget/parameterized_algorithm_base/Parameters/parameter.hpp \
+    src/parameter_list_widget/parameterized_algorithm_base/Parameters/realparameter.hpp \
+    src/parameter_list_widget/parameterized_algorithm_base/algorithm.hpp \
+    src/parameter_list_widget/parameterized_algorithm_base/parametervisitor.hpp
 
 INCLUDEPATH += $$PWD/src
 
