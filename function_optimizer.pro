@@ -100,15 +100,8 @@ SOURCES += \
     src/parser/Entities/vector.cpp \
     src/parser/Parser/ExpTree/ExpNodes/expnode.cpp \
     src/utills/randomgenerator.cpp \
-    src/ui/functiondrawer.cpp \
-    src/ui/widgets/vectorlistwidget.cpp \
-    src/ui/boxes/inputfunctionbox.cpp \
-    src/parameter_list_widget/guicreatingvisitor.cpp \
-    src/parameter_list_widget/parameterlistwidget.cpp \
-    src/parameter_list_widget/parameterized_algorithm_base/Parameters/flagparameter.cpp \
-    src/parameter_list_widget/parameterized_algorithm_base/Parameters/intparameter.cpp \
-    src/parameter_list_widget/parameterized_algorithm_base/Parameters/parameter.cpp \
-    src/parameter_list_widget/parameterized_algorithm_base/Parameters/realparameter.cpp
+    src/ui/widgets/functiondrawer.cpp \
+    src/ui/boxes/inputfunctionbox.cpp
 
 HEADERS += \
         src/ui/mainwindow.hpp \
@@ -186,17 +179,8 @@ HEADERS += \
     src/parser/Entities/vector.hpp \
     src/parser/Parser/ExpTree/ExpNodes/expnode.hpp \
     src/utills/randomgenerator.hpp \
-    src/ui/functiondrawer.hpp \
-    src/ui/widgets/vectorlistwidget.hpp \
+    src/ui/widgets/functiondrawer.hpp \
     src/ui/boxes/inputfunctionbox.hpp \
-    src/parameter_list_widget/guicreatingvisitor.hpp \
-    src/parameter_list_widget/parameterlistwidget.hpp \
-    src/parameter_list_widget/parameterized_algorithm_base/Parameters/flagparameter.hpp \
-    src/parameter_list_widget/parameterized_algorithm_base/Parameters/intparameter.hpp \
-    src/parameter_list_widget/parameterized_algorithm_base/Parameters/parameter.hpp \
-    src/parameter_list_widget/parameterized_algorithm_base/Parameters/realparameter.hpp \
-    src/parameter_list_widget/parameterized_algorithm_base/algorithm.hpp \
-    src/parameter_list_widget/parameterized_algorithm_base/parametervisitor.hpp \
     src/algorithms/optimizationalgorithm.hpp
 
 INCLUDEPATH += $$PWD/src
