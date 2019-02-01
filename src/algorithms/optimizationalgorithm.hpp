@@ -3,8 +3,8 @@
 
 #include <vector>
 
-#include <parser/Functions/function.hpp>
-#include <parameter_list_widget/parameterized_algorithm_base/algorithm.hpp>
+#include <parser/function.hpp>
+#include <parameterized_algorithm_qt/core/algorithm.hpp>
 
 struct OptimizationResult
 {
