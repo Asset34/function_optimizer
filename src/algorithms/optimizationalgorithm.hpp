@@ -4,12 +4,14 @@
 #include <vector>
 
 #include <parser/function.hpp>
+#include <parser/Utility/vector.hpp>
 #include <parameterized_algorithm_qt/core/algorithm.hpp>
 
 struct OptimizationResult
 {
     int iterations;
-    std::vector<double> value;
+    Vector argument;
+    double value;
 };
 
 class OptimizationAlgorithm : public Algorithm
