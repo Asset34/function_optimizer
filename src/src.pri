@@ -12,7 +12,8 @@ SOURCES += \
         $$PWD/utills/randomgenerator.cpp \
         $$PWD/ui/widgets/functiondrawer.cpp \
         $$PWD/ui/boxes/functioninputbox.cpp \
-        $$PWD/ui/widgets/optimizationalgorithmwidget.cpp
+        $$PWD/ui/widgets/optimizationalgorithmwidget.cpp \
+        $$PWD/ui/widgets/optimizationresultwidget.cpp
 
 HEADERS += \
         $$PWD/ui/mainwindow.hpp \
@@ -20,4 +21,5 @@ HEADERS += \
         $$PWD/ui/widgets/functiondrawer.hpp \
         $$PWD/algorithms/optimizationalgorithm.hpp \
         $$PWD/ui/boxes/functioninputbox.hpp \
-        $$PWD/ui/widgets/optimizationalgorithmwidget.hpp
+        $$PWD/ui/widgets/optimizationalgorithmwidget.hpp \
+        $$PWD/ui/widgets/optimizationresultwidget.hpp
