@@ -4,6 +4,7 @@ INCLUDEPATH += $$PWD
 DEPENDPATH += $$PWD
 
 include(parser/parser.pri)
+include(parameterized_algorithm_qt/parameterized_algorithm_qt.pri)
 
 SOURCES += \
         $$PWD/main.cpp \
@@ -16,6 +17,3 @@ HEADERS += \
         $$PWD/utills/randomgenerator.hpp \
         $$PWD/ui/widgets/functiondrawer.hpp \
         $$PWD/algorithms/optimizationalgorithm.hpp
-
-RESOURCES += \
-    items.qrc
