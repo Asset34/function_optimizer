@@ -13,7 +13,8 @@ SOURCES += \
         $$PWD/ui/widgets/functiondrawer.cpp \
         $$PWD/ui/boxes/functioninputbox.cpp \
         $$PWD/ui/widgets/optimizationalgorithmwidget.cpp \
-        $$PWD/ui/widgets/optimizationresultwidget.cpp
+        $$PWD/ui/widgets/optimizationresultwidget.cpp \
+        $$PWD/ui/widgets/functionoptimizerwidget.cpp
 
 HEADERS += \
         $$PWD/ui/mainwindow.hpp \
@@ -22,4 +23,5 @@ HEADERS += \
         $$PWD/algorithms/optimizationalgorithm.hpp \
         $$PWD/ui/boxes/functioninputbox.hpp \
         $$PWD/ui/widgets/optimizationalgorithmwidget.hpp \
-        $$PWD/ui/widgets/optimizationresultwidget.hpp
+        $$PWD/ui/widgets/optimizationresultwidget.hpp \
+        $$PWD/ui/widgets/functionoptimizerwidget.hpp
