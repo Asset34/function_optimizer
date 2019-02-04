@@ -14,7 +14,10 @@ SOURCES += \
         $$PWD/ui/boxes/functioninputbox.cpp \
         $$PWD/ui/widgets/optimizationalgorithmwidget.cpp \
         $$PWD/ui/widgets/optimizationresultwidget.cpp \
-        $$PWD/ui/widgets/functionoptimizerwidget.cpp
+        $$PWD/ui/widgets/functionoptimizerwidget.cpp \
+        $$PWD/algorithms/geneticalgorithm.cpp \
+        $$PWD/algorithms/chromosome.cpp \
+        $$PWD/algorithms/population.cpp
 
 HEADERS += \
         $$PWD/ui/mainwindow.hpp \
@@ -24,4 +27,7 @@ HEADERS += \
         $$PWD/ui/boxes/functioninputbox.hpp \
         $$PWD/ui/widgets/optimizationalgorithmwidget.hpp \
         $$PWD/ui/widgets/optimizationresultwidget.hpp \
-        $$PWD/ui/widgets/functionoptimizerwidget.hpp
+        $$PWD/ui/widgets/functionoptimizerwidget.hpp \
+        $$PWD/algorithms/geneticalgorithm.hpp \
+        $$PWD/algorithms/chromosome.hpp \
+        $$PWD/algorithms/population.hpp
