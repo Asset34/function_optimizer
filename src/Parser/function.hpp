@@ -18,6 +18,7 @@ public:
         const QVector<QString> &variables
         );
 
+    double operator()(const std::vector<double> &vec) const;
     double operator()(const Vector &vec) const;
 
     int getSize() const;

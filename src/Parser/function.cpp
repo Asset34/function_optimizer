@@ -9,6 +9,11 @@ Function::Function(
 {
 }
 
+double Function::operator()(const std::vector<double> &vec) const
+{
+    return this->operator()(Vector(vec));
+}
+
 double Function::operator()(const Vector &vec) const
 {
     Values values;
