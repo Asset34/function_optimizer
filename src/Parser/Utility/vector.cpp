@@ -36,7 +36,7 @@ std::string Vector::toString() const
 {
     std::ostringstream ss;
     ss << "(";
-    for (int value : m_values) {
+    for (double value : m_values) {
         ss << value << ", ";
     }
     ss << ")";
