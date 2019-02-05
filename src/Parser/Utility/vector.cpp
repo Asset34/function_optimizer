@@ -2,11 +2,6 @@
 
 #include <sstream>
 
-//std::default_random_engine Vector::m_engine(
-//        std::chrono::system_clock::now().time_since_epoch().count()
-//        );
-std::default_random_engine Vector::m_engine;
-
 Vector::Vector(int size, double value)
     : m_values(size, value)
 {
@@ -35,20 +30,6 @@ int Vector::getSize() const
 void Vector::setSize(int size)
 {
     m_values.resize(size);
-}
-
-void Vector::generate(double min, double max)
-{
-    std::uniform_real_distribution<double> distr(min, max);
-    for (double &value : m_values) {
-        value = distr(m_engine);
-    }
-}
-
-void Vector::generateAt(int index, double min, double max)
-{
-    std::uniform_real_distribution<double> distr(min, max);
-    m_values[index] = distr(m_engine);
 }
 
 std::string Vector::toString() const

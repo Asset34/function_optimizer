@@ -3,7 +3,6 @@
 
 #include <vector>
 #include <string>
-#include <random>
 
 class Vector
 {
@@ -17,15 +16,10 @@ public:
     int getSize() const;
     void setSize(int size);
 
-    void generate(double min, double max);
-    void generateAt(int index, double min, double max);
-
     std::string toString() const;
 
 private:
     std::vector<double> m_values;
-
-    static std::default_random_engine m_engine;
 
 };
 
