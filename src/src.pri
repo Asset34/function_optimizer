@@ -15,19 +15,21 @@ SOURCES += \
         $$PWD/ui/widgets/optimizationalgorithmwidget.cpp \
         $$PWD/ui/widgets/optimizationresultwidget.cpp \
         $$PWD/ui/widgets/functionoptimizerwidget.cpp \
-        $$PWD/algorithms/geneticalgorithm.cpp \
-        $$PWD/algorithms/chromosome.cpp \
-        $$PWD/algorithms/population.cpp
+        $$PWD/algorithms/genetic_algorithm/geneticalgorithm.cpp \
+        $$PWD/algorithms/genetic_algorithm/chromosome.cpp \
+        $$PWD/algorithms/genetic_algorithm/population.cpp \
+        $$PWD/algorithms/genetic_algorithm/fitnessfunction.cpp
 
 HEADERS += \
         $$PWD/ui/mainwindow.hpp \
         $$PWD/utills/randomgenerator.hpp \
         $$PWD/ui/widgets/functiondrawer.hpp \
-        $$PWD/algorithms/optimizationalgorithm.hpp \
         $$PWD/ui/boxes/functioninputbox.hpp \
         $$PWD/ui/widgets/optimizationalgorithmwidget.hpp \
         $$PWD/ui/widgets/optimizationresultwidget.hpp \
         $$PWD/ui/widgets/functionoptimizerwidget.hpp \
-        $$PWD/algorithms/geneticalgorithm.hpp \
-        $$PWD/algorithms/chromosome.hpp \
-        $$PWD/algorithms/population.hpp
+        $$PWD/algorithms/optimizationalgorithm.hpp \
+        $$PWD/algorithms/genetic_algorithm/geneticalgorithm.hpp \
+        $$PWD/algorithms/genetic_algorithm/chromosome.hpp \
+        $$PWD/algorithms/genetic_algorithm/population.hpp \
+        $$PWD/algorithms/genetic_algorithm/fitnessfunction.hpp

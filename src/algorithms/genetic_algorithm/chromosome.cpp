@@ -24,11 +24,6 @@ int GeneticAlgorithm::Chromosome::getSize() const
     return m_gens.size();
 }
 
-const std::vector<double> GeneticAlgorithm::Chromosome::getData() const
-{
-    return m_gens;
-}
-
 void GeneticAlgorithm::Chromosome::generate(double min, double max)
 {
     for (double &gen : m_gens) {
@@ -36,13 +31,23 @@ void GeneticAlgorithm::Chromosome::generate(double min, double max)
     }
 }
 
-void GeneticAlgorithm::Chromosome::mutation(double chance, double min, double max)
+void GeneticAlgorithm::Chromosome::generateGen(int index, double min, double max)
+{
+    m_gens[index] = RandomGenerator::generateDouble(min, max);
+}
+
+void GeneticAlgorithm::Chromosome::mutate(double chance, double min, double max)
 {
     for (double &gen : m_gens) {
         if (RandomGenerator::generateAction(chance)) {
             gen = RandomGenerator::generateDouble(min, max);
         }
     }
+}
+
+void GeneticAlgorithm::Chromosome::mutateGen(int index, double min, double max)
+{
+    generateGen(index, min, max);
 }
 
 GeneticAlgorithm::Chromosome GeneticAlgorithm::Chromosome::crossover(
@@ -55,12 +60,17 @@ GeneticAlgorithm::Chromosome GeneticAlgorithm::Chromosome::crossover(
     Chromosome result(c1.getSize());
     for (int i = 0; i < c1.getSize(); i++) {
         if (c1[i] < c2[i]) {
-            result[i] = RandomGenerator::generateDouble(c1[i], c2[i]);
+            result.generateGen(i, c1[i], c2[i]);
         }
         else {
-            result[i] = RandomGenerator::generateDouble(c2[i], c1[i]);
+            result.generateGen(i, c2[i], c1[i]);
         }
     }
 
     return result;
+}
+
+Vector GeneticAlgorithm::Chromosome::toVector() const
+{
+    return Vector(m_gens);
 }
