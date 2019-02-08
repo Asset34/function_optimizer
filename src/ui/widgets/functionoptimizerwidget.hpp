@@ -5,6 +5,7 @@
 
 class QVBoxLayout;
 class QPushButton;
+class QFrame;
 class FunctionInputBox;
 class OptimizationAlgorithmWidget;
 class OptimizationResultWidget;
@@ -23,6 +24,8 @@ private:
     QVBoxLayout *m_layout;
 
     QPushButton *m_optimizeButton;
+
+    QFrame *m_separator;
 
     FunctionInputBox *m_functionInputBox;
     OptimizationAlgorithmWidget *m_algorithmWidget;

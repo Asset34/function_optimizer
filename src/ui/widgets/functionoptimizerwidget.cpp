@@ -2,6 +2,8 @@
 
 #include <QVBoxLayout>
 #include <QPushButton>
+#include <QFrame>
+
 
 #include <ui/boxes/functioninputbox.hpp>
 
@@ -41,12 +43,17 @@ FunctionOptimizerWidget::FunctionOptimizerWidget(QWidget *parent)
     m_algorithmWidget->addAlgorithm(std::unique_ptr<OptimizationAlgorithm>(new GeneticAlgorithm));
     m_algorithmWidget->addAlgorithm(std::unique_ptr<OptimizationAlgorithm>(new ParticleSwarm));
 
+    m_separator = new QFrame;
+    m_separator->setFrameShape(QFrame::HLine);
+    m_separator->setFrameShadow(QFrame::Raised);
+
     m_optimizeButton = new QPushButton("Optimize");
 
     m_layout = new QVBoxLayout;
     m_layout->setContentsMargins(0, 0, 0, 0);
     m_layout->addWidget(m_functionInputBox);
     m_layout->addWidget(m_algorithmWidget);
+    m_layout->addWidget(m_separator);
     m_layout->addWidget(m_resultWidget);
     m_layout->addWidget(m_optimizeButton);
 
