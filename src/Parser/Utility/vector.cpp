@@ -2,6 +2,11 @@
 
 #include <sstream>
 
+//std::default_random_engine RandomGenerator::m_engine(
+//        std::chrono::system_clock::now().time_since_epoch().count()
+//        );
+std::default_random_engine Vector::m_engine;
+
 Vector::Vector(int size, double value)
     : m_values(size, value)
 {
@@ -32,6 +37,82 @@ void Vector::setSize(int size)
     m_values.resize(size);
 }
 
+void Vector::generate(double min, double max)
+{
+    std::uniform_real_distribution<double> distr(min, max);
+    for (double &value : m_values) {
+        value = distr(m_engine);
+    }
+}
+
+Vector Vector::operator+(const Vector &vec) const
+{
+    Vector result(getSize());
+    for (int i = 0; i < getSize(); i++) {
+        result[i] = m_values[i] + vec[i];
+    }
+
+    return result;
+}
+
+Vector Vector::operator-(const Vector &vec) const
+{
+    Vector result(getSize());
+    for (int i = 0; i < getSize(); i++) {
+        result[i] = m_values[i] - vec[i];
+    }
+
+    return result;
+}
+
+Vector Vector::operator*(const Vector &vec) const
+{
+    Vector result(getSize());
+    for (int i = 0; i < getSize(); i++) {
+        result[i] = m_values[i] * vec[i];
+    }
+
+    return result;
+}
+
+Vector Vector::operator*(double scalar) const
+{
+    Vector result(getSize());
+    for (int i = 0; i < getSize(); i++) {
+        result[i] = scalar * m_values[i];
+    }
+
+    return result;
+}
+
+Vector Vector::operator/(double scalar) const
+{
+    Vector result(getSize());
+    for (int i = 0; i < getSize(); i++) {
+        result[i] = m_values[i] / scalar;
+    }
+
+    return result;
+}
+
+Vector &Vector::operator+=(const Vector &vec)
+{
+    for (int i = 0; i < getSize(); i++) {
+        m_values[i] += vec[i];
+    }
+
+    return *this;
+}
+
+Vector &Vector::operator-=(const Vector &vec)
+{
+    for (int i = 0; i < getSize(); i++) {
+        m_values[i] -= vec[i];
+    }
+
+    return *this;
+}
+
 std::string Vector::toString() const
 {
     std::ostringstream ss;
@@ -42,4 +123,9 @@ std::string Vector::toString() const
     ss << ")";
 
     return ss.str();
+}
+
+Vector operator*(double scalar, const Vector &vec)
+{
+    return vec * scalar;
 }
