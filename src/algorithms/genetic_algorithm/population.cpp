@@ -25,6 +25,16 @@ int GeneticAlgorithm::Population::getSize() const
     return m_chromosomes.size();
 }
 
+std::vector<Vector> GeneticAlgorithm::Population::getData() const
+{
+    std::vector<Vector> data(getSize());
+    for (int i = 0; i < getSize(); i++) {
+        data[i] = m_chromosomes[i].toVector();
+    }
+
+    return data;
+}
+
 const GeneticAlgorithm::Chromosome &GeneticAlgorithm::Population::findMin(const FitnessFunction &f) const
 {
     return *std::min_element(

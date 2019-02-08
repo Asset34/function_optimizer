@@ -67,7 +67,6 @@ void FunctionDrawer::setMarks(const QVector<QVector3D> &marks)
 
         m_graph->addCustomItem(item);
         }
-    }
 }
 
 void FunctionDrawer::setMarks(const std::vector<Vector> &marks, const Function &f)

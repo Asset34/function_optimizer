@@ -1,8 +1,7 @@
 #ifndef CHROMOSOME_HPP
 #define CHROMOSOME_HPP
 
-#include <vector>
-
+#include <parser/Utility/vector.hpp>
 #include <parser/Utility/vector.hpp>
 
 class GeneticAlgorithm::Chromosome
@@ -22,10 +21,10 @@ public:
     void mutateGen(int index, double min, double max);
     static Chromosome crossover(const Chromosome &c1, const Chromosome &c2);
 
-    Vector toVector() const;
+    const Vector &toVector() const;
 
 private:
-    std::vector<double> m_gens;
+    Vector m_gens;
 
 };
 

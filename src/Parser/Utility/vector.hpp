@@ -18,6 +18,7 @@ public:
     void setSize(int size);
 
     void generate(double min, double max);
+    void generateAt(int index, double min, double max);
 
     Vector operator+(const Vector &vec) const;
     Vector operator-(const Vector &vec) const;

@@ -32,6 +32,9 @@ std::vector<Parameter*> ParticleSwarm::getParameters()
 
 OptimizationResult ParticleSwarm::execute(const Function &f)
 {
+    OptimizationData data;
+    data.reserve(m_iterations + 1);
+
     // Initialize
     std::vector<Vector> positions(m_swarmSize, Vector(f.getSize()));
     std::vector<Vector> velocities(m_swarmSize, Vector(f.getSize()));
@@ -42,6 +45,7 @@ OptimizationResult ParticleSwarm::execute(const Function &f)
 
         bestPositions[i] = positions[i];
     }
+    data.push_back(positions);
 
     // Find initial swarm best solution
     Vector swarmBestPosition = *std::min_element(
@@ -79,11 +83,14 @@ OptimizationResult ParticleSwarm::execute(const Function &f)
                 }
             }
         }
+
+        data.push_back(positions);
     }
 
     return OptimizationResult {
         .iterations = m_iterations,
         .argument = swarmBestPosition,
-        .value = f(swarmBestPosition)
+        .value = f(swarmBestPosition),
+        .data = data
     };
 }

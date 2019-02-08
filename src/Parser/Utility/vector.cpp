@@ -45,6 +45,12 @@ void Vector::generate(double min, double max)
     }
 }
 
+void Vector::generateAt(int index, double min, double max)
+{
+    std::uniform_real_distribution<double> distr(min, max);
+    m_values[index] = distr(m_engine);
+}
+
 Vector Vector::operator+(const Vector &vec) const
 {
     Vector result(getSize());

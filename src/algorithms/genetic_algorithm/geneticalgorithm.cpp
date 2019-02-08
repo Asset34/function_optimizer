@@ -35,13 +35,19 @@ OptimizationResult GeneticAlgorithm::execute(const Function &f)
 {
     FitnessFunction fitnessFunc(f);
 
+    OptimizationData data;
+    data.reserve(m_iterations + 1);
+
     Population population(m_populationSize, f.getSize());
     population.generate(m_leftBound, m_rightBound);
+    data.push_back(population.getData());
 
     for (int i = 0; i < m_iterations; i++) {
         population.select(m_selectionSize, m_tournamentSize, fitnessFunc);
         population.reproduce(m_populationSize);
         population.mutate(m_mutationFactor, m_leftBound, m_rightBound);
+
+        data.push_back(population.getData());
     }
 
     const Chromosome &min = population.findMin(fitnessFunc);
@@ -49,6 +55,7 @@ OptimizationResult GeneticAlgorithm::execute(const Function &f)
     return OptimizationResult {
         .iterations = m_iterations,
         .argument = min.toVector(),
-        .value = f(min.toVector())
+        .value = f(min.toVector()),
+        .data = data
     };
 }

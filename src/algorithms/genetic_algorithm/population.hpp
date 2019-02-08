@@ -3,6 +3,8 @@
 
 #include <vector>
 
+#include <parser/Utility/vector.hpp>
+
 class Chromosome;
 class FitnessFunction;
 
@@ -15,6 +17,7 @@ public:
     Chromosome &operator[](int index);
 
     int getSize() const;
+    std::vector<Vector> getData() const;
 
     const Chromosome &findMin(const FitnessFunction &f) const;
     const Chromosome &findMin(const std::vector<int> indexes, const FitnessFunction &f) const;

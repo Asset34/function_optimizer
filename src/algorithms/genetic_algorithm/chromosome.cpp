@@ -21,26 +21,24 @@ double &GeneticAlgorithm::Chromosome::operator[](int index)
 
 int GeneticAlgorithm::Chromosome::getSize() const
 {
-    return m_gens.size();
+    return m_gens.getSize();
 }
 
 void GeneticAlgorithm::Chromosome::generate(double min, double max)
 {
-    for (double &gen : m_gens) {
-        gen = RandomGenerator::generateDouble(min, max);
-    }
+    m_gens.generate(min, max);
 }
 
 void GeneticAlgorithm::Chromosome::generateGen(int index, double min, double max)
 {
-    m_gens[index] = RandomGenerator::generateDouble(min, max);
+    m_gens.generateAt(index, min, max);
 }
 
 void GeneticAlgorithm::Chromosome::mutate(double chance, double min, double max)
 {
-    for (double &gen : m_gens) {
+    for (int i = 0; i < m_gens.getSize(); i++) {
         if (RandomGenerator::generateAction(chance)) {
-            gen = RandomGenerator::generateDouble(min, max);
+            generateGen(i, min, max);
         }
     }
 }
@@ -70,7 +68,7 @@ GeneticAlgorithm::Chromosome GeneticAlgorithm::Chromosome::crossover(
     return result;
 }
 
-Vector GeneticAlgorithm::Chromosome::toVector() const
+const Vector &GeneticAlgorithm::Chromosome::toVector() const
 {
-    return Vector(m_gens);
+    return m_gens;
 }

@@ -7,11 +7,14 @@
 #include <parser/Utility/vector.hpp>
 #include <parameterized_algorithm_qt/core/algorithm.hpp>
 
+using OptimizationData = std::vector<std::vector<Vector>>;
+
 struct OptimizationResult
 {
     int iterations;
     Vector argument;
     double value;
+    OptimizationData data;
 };
 
 class OptimizationAlgorithm : public Algorithm
