@@ -19,7 +19,8 @@ SOURCES += \
         $$PWD/algorithms/genetic_algorithm/chromosome.cpp \
         $$PWD/algorithms/genetic_algorithm/population.cpp \
         $$PWD/algorithms/genetic_algorithm/fitnessfunction.cpp \
-        $$PWD/algorithms/particleswarm.cpp
+        $$PWD/algorithms/particleswarm.cpp \
+        $$PWD/ui/boxes/iterationbox.cpp
 
 HEADERS += \
         $$PWD/ui/mainwindow.hpp \
@@ -34,4 +35,5 @@ HEADERS += \
         $$PWD/algorithms/genetic_algorithm/chromosome.hpp \
         $$PWD/algorithms/genetic_algorithm/population.hpp \
         $$PWD/algorithms/genetic_algorithm/fitnessfunction.hpp \
-        $$PWD/algorithms/particleswarm.hpp
+        $$PWD/algorithms/particleswarm.hpp \
+        $$PWD/ui/boxes/iterationbox.hpp
