@@ -6,7 +6,10 @@
 
 #include <QVector>
 
-#include <parser/Functions/function.hpp>
+#include <vector>
+
+#include <parser/function.hpp>
+#include <parser/Utility/vector.hpp>
 
 using namespace QtDataVisualization;
 
@@ -15,22 +18,18 @@ class QVBoxLayout;
 class FunctionDrawer : public QWidget
 {
     Q_OBJECT
+
 public:
     explicit FunctionDrawer(QWidget *parent = nullptr);
 
 public slots:
-    void setFunction(
-            const Function &func,
-            double xmin,
-            double xmax,
-            double ymin,
-            double ymax
-            );
+    void setFunction(const Function &f, double min, double max);
     void setMarks(const QVector<QVector3D> &marks);
+    void setMarks(const std::vector<Vector> &marks, const Function &f);
     void clearMarks();
 
 private:
-    constexpr static const double STEP = 1.0;
+    static const int POINT_COUNT = 100;
     static const QColor MARK_COLOR;
 
     QVBoxLayout *m_layout;

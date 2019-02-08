@@ -3,9 +3,7 @@
 #include <QVBoxLayout>
 #include <QtDataVisualization>
 
-#include <QDebug>
-
-const QColor FunctionDrawer::MARK_COLOR = Qt::red;
+const QColor FunctionDrawer::MARK_COLOR = Qt::black;
 
 FunctionDrawer::FunctionDrawer(QWidget *parent)
     : QWidget(parent)
@@ -32,32 +30,19 @@ FunctionDrawer::FunctionDrawer(QWidget *parent)
     setLayout(m_layout);
 }
 
-void FunctionDrawer::setFunction(
-        const Function &func,
-        double xmin,
-        double xmax,
-        double ymin,
-        double ymax
-        )
+void FunctionDrawer::setFunction(const Function &f, double min, double max)
 {
-    m_graph->axisX()->setRange(ymin, ymax);
-    m_graph->axisZ()->setRange(xmin, xmax);
+    double step = (max - min) / (POINT_COUNT - 1);
 
     QSurfaceDataArray *data = new QSurfaceDataArray;
-    double x = xmin;
-    double y;
-    while (x < xmax) {
-        QSurfaceDataRow *dataRow = new QSurfaceDataRow;
-
-        y = ymin;
-        while (y < ymax) {
-            *dataRow << QVector3D(y, func({x, y}), x);
-            y += STEP;
+    QSurfaceDataRow *dataRow;
+    for (double y = min; y <= max; y += step) {
+        dataRow = new QSurfaceDataRow;
+        for (double x = min; x <= max; x += step) {
+            *dataRow << QVector3D(x, f(std::vector<double>{x, y}), y);
         }
 
         *data << dataRow;
-
-        x += STEP;
     }
 
     m_dataSeries->dataProxy()->resetArray(data);
@@ -70,21 +55,35 @@ void FunctionDrawer::setMarks(const QVector<QVector3D> &marks)
     QImage color = QImage(2, 2, QImage::Format_RGB32);
     color.fill(MARK_COLOR);
 
-//    QCustom3DItem *item;
+    QCustom3DItem *item;
     for (QVector3D mark : marks) {
-        QCustom3DItem *item = new QCustom3DItem(
-                    ":/items/sphere.obj",
-                    mark,
-                    QVector3D(0.01f, 0.01f, 0.01f),
-                    QQuaternion(),
-                    color
-                    );
+        item = new QCustom3DItem(
+                   ":/items/sphere.obj",
+                   mark,
+                   QVector3D(0.01f, 0.01f, 0.01f),
+                   QQuaternion(),
+                   color
+                   );
 
-        int check = m_graph->addCustomItem(item);
-        if (check < 0) {
-             qDebug() << "FAIL";
+        m_graph->addCustomItem(item);
         }
     }
+}
+
+void FunctionDrawer::setMarks(const std::vector<Vector> &marks, const Function &f)
+{
+    QVector<QVector3D> transformedMarks(marks.size());
+    double x, y;
+    for (int i = 0; i < marks.size(); i++) {
+        x = marks[i][0];
+        y = marks[i][1];
+
+        transformedMarks[i].setX(x);
+        transformedMarks[i].setY(f(std::vector<double>{x, y}));
+        transformedMarks[i].setZ(y);
+    }
+
+    setMarks(transformedMarks);
 }
 
 void FunctionDrawer::clearMarks()
