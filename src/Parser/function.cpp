@@ -9,6 +9,26 @@ Function::Function(
 {
 }
 
+Function::Function(Function &&other)
+    : m_exp(other.m_exp),
+      m_expTree(std::move(other.m_expTree)),
+      m_variables(other.m_variables)
+{
+    other.m_exp.clear();
+    other.m_variables.clear();
+}
+
+Function &Function::operator=(Function &&other)
+{
+    m_exp = other.m_exp;
+    other.m_exp.clear();
+
+    m_expTree = std::move(other.m_expTree);
+
+    m_variables = other.m_variables;
+    other.m_variables.clear();
+}
+
 double Function::operator()(const std::vector<double> &vec) const
 {
     return this->operator()(Vector(vec));

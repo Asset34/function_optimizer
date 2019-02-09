@@ -12,11 +12,17 @@
 class Function
 {
 public:
+    Function() = default;
     Function(
         const QString &exp,
         std::unique_ptr<ExpNode> expTree,
         const QVector<QString> &variables
         );
+    Function(const Function &other) = delete;
+    Function(Function &&other);
+
+    Function &operator=(const Function &other) = delete;
+    Function &operator=(Function &&other);
 
     double operator()(const std::vector<double> &vec) const;
     double operator()(const Vector &vec) const;
