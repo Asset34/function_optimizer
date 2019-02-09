@@ -12,6 +12,8 @@ using OptimizationData = std::vector<std::vector<Vector>>;
 struct OptimizationResult
 {
     int iterations;
+    double leftBound;
+    double rightBound;
     Vector argument;
     double value;
     OptimizationData data;

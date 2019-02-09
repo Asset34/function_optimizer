@@ -89,6 +89,8 @@ OptimizationResult ParticleSwarm::execute(const Function &f)
 
     return OptimizationResult {
         .iterations = m_iterations,
+        .leftBound = m_leftBound,
+        .rightBound = m_rightBound,
         .argument = swarmBestPosition,
         .value = f(swarmBestPosition),
         .data = data

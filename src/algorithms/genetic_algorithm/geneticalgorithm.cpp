@@ -54,6 +54,8 @@ OptimizationResult GeneticAlgorithm::execute(const Function &f)
 
     return OptimizationResult {
         .iterations = m_iterations,
+        .leftBound = m_leftBound,
+        .rightBound = m_rightBound,
         .argument = min.toVector(),
         .value = f(min.toVector()),
         .data = data
