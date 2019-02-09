@@ -73,6 +73,16 @@ void IterationWidget::setMax(int max)
     m_iterationBox->setMax(max);
 }
 
+void IterationWidget::first()
+{
+    m_iterationBox->first();
+}
+
+void IterationWidget::last()
+{
+    m_iterationBox->last();
+}
+
 void IterationWidget::next()
 {
     m_iterationBox->next();

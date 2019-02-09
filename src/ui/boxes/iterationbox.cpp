@@ -64,6 +64,16 @@ void IterationBox::setMax(int max)
     emit maxIterationChanged(max);
 }
 
+void IterationBox::first()
+{
+    setCurrent(1);
+}
+
+void IterationBox::last()
+{
+    setCurrent(m_max);
+}
+
 void IterationBox::next()
 {
     if (m_current < m_max) {

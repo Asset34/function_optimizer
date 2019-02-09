@@ -12,7 +12,7 @@ class IterationBox : public QWidget
     Q_OBJECT
 
 public:
-    explicit IterationBox(int current, int max, QWidget *parent = nullptr);
+    explicit IterationBox(int current = 0, int max = 0, QWidget *parent = nullptr);
 
     int getCurrent() const;
     int getMax() const;
@@ -20,6 +20,9 @@ public:
 public slots:
     void setCurrent(int it);
     void setMax(int max);
+
+    void first();
+    void last();
     void next();
     void prev();
 
