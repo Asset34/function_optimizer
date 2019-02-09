@@ -25,7 +25,7 @@ public:
 public slots:
     void setFunction(const Function &f, double min, double max);
     void setMarks(const QVector<QVector3D> &marks);
-    void setMarks(const std::vector<Vector> &marks, const Function &f);
+    void setMarks(const Function &f, const std::vector<Vector> &marks);
     void clearMarks();
 
 private:

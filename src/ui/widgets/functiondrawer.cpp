@@ -69,7 +69,7 @@ void FunctionDrawer::setMarks(const QVector<QVector3D> &marks)
         }
 }
 
-void FunctionDrawer::setMarks(const std::vector<Vector> &marks, const Function &f)
+void FunctionDrawer::setMarks(const Function &f, const std::vector<Vector> &marks)
 {
     QVector<QVector3D> transformedMarks(marks.size());
     double x, y;
