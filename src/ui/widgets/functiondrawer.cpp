@@ -3,11 +3,17 @@
 #include <QVBoxLayout>
 #include <QtDataVisualization>
 
+#include <QDebug>
+
 const QColor FunctionDrawer::MARK_COLOR = Qt::black;
 
 FunctionDrawer::FunctionDrawer(QWidget *parent)
-    : QWidget(parent)
+    : QWidget(parent),
+      m_markTexture(2, 2, QImage::Format_RGB32),
+      m_selectedIndex(-1)
 {
+    m_markTexture.fill(MARK_COLOR);
+
     // Create data series
     m_dataSeries = new QSurface3DSeries;
     m_dataSeries->setDrawMode(QSurface3DSeries::DrawSurface);
@@ -19,12 +25,12 @@ FunctionDrawer::FunctionDrawer(QWidget *parent)
     m_graph->addSeries(m_dataSeries);
 
     // Create container
-    QWidget *container = QWidget::createWindowContainer(m_graph);
+    m_container = QWidget::createWindowContainer(m_graph);
 
     // Create layout
     m_layout = new QVBoxLayout;
     m_layout->setContentsMargins(0, 0, 0, 0);
-    m_layout->addWidget(container);
+    m_layout->addWidget(m_container);
 
     // Create widget
     setLayout(m_layout);
@@ -32,7 +38,7 @@ FunctionDrawer::FunctionDrawer(QWidget *parent)
 
 void FunctionDrawer::setFunction(const Function &f, double min, double max)
 {
-    double step = (max - min) / (POINT_COUNT - 1);
+    double step = (max - min) / (MARK_COUNT - 1);
 
     QSurfaceDataArray *data = new QSurfaceDataArray;
     QSurfaceDataRow *dataRow;
@@ -46,30 +52,45 @@ void FunctionDrawer::setFunction(const Function &f, double min, double max)
     }
 
     m_dataSeries->dataProxy()->resetArray(data);
+
+    // Adjust axis
+    m_graph->axisX()->setRange(min, max);
+    m_graph->axisZ()->setRange(min, max);
+    m_graph->axisY()->setAutoAdjustRange(true);
+    m_graph->axisY()->setRange(
+                m_graph->axisY()->min() - GRAPH_OFFEST,
+                m_graph->axisY()->max() + GRAPH_OFFEST
+                );
 }
 
-void FunctionDrawer::setMarks(const QVector<QVector3D> &marks)
+void FunctionDrawer::clearFunction()
 {
-    m_graph->removeCustomItems();
-
-    QImage color = QImage(2, 2, QImage::Format_RGB32);
-    color.fill(MARK_COLOR);
-
-    QCustom3DItem *item;
-    for (QVector3D mark : marks) {
-        item = new QCustom3DItem(
-                   ":/items/sphere.obj",
-                   mark,
-                   QVector3D(0.01f, 0.01f, 0.01f),
-                   QQuaternion(),
-                   color
-                   );
-
-        m_graph->addCustomItem(item);
-        }
+    m_dataSeries->dataProxy()->removeRows(
+                0,
+                m_dataSeries->dataProxy()->rowCount()
+                );
 }
 
-void FunctionDrawer::setMarks(const Function &f, const std::vector<Vector> &marks)
+void FunctionDrawer::addMarkSet(const QVector<QVector3D> &marks)
+{
+    MarkSet markSet(marks.size());
+    for (int i = 0; i < marks.size(); i++) {
+        markSet[i] = new QCustom3DItem(
+                   ":/items/cube.obj",
+                   marks[i],
+                   QVector3D(MARK_SCALE, MARK_SCALE, MARK_SCALE),
+                   QQuaternion(),
+                   m_markTexture
+                   );
+        markSet[i]->setVisible(false);
+
+        m_graph->addCustomItem(markSet[i]);
+    }
+
+    m_markSets.push_back(markSet);
+}
+
+void FunctionDrawer::addMarkSet(const Function &f, const std::vector<Vector> &marks)
 {
     QVector<QVector3D> transformedMarks(marks.size());
     double x, y;
@@ -82,10 +103,42 @@ void FunctionDrawer::setMarks(const Function &f, const std::vector<Vector> &mark
         transformedMarks[i].setZ(y);
     }
 
-    setMarks(transformedMarks);
+    addMarkSet(transformedMarks);
 }
 
 void FunctionDrawer::clearMarks()
 {
     m_graph->removeCustomItems();
+    m_markSets.clear();
+    m_selectedIndex = -1;
+}
+
+void FunctionDrawer::selectMarkSet(int index)
+{
+    if (m_selectedIndex >= 0) {
+        hideMarkSet(m_selectedIndex);
+    }
+
+    m_selectedIndex = index;
+    showMarkSet(index);
+}
+
+void FunctionDrawer::clear()
+{
+    clearMarks();
+    clearFunction();
+}
+
+void FunctionDrawer::showMarkSet(int index)
+{
+    for (QCustom3DItem *item : m_markSets[index]) {
+        item->setVisible(true);
+    }
+}
+
+void FunctionDrawer::hideMarkSet(int index)
+{
+    for (QCustom3DItem *item : m_markSets[index]) {
+        item->setVisible(false);
+    }
 }

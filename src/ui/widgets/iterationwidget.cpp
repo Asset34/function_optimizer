@@ -92,3 +92,8 @@ void IterationWidget::prev()
 {
     m_iterationBox->prev();
 }
+
+void IterationWidget::clear()
+{
+    m_iterationBox->clear();
+}

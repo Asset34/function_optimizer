@@ -27,6 +27,8 @@ public slots:
     void next();
     void prev();
 
+    void clear();
+
 private:
     QVBoxLayout *m_mainLayout;
     QHBoxLayout *m_buttonsLayout;

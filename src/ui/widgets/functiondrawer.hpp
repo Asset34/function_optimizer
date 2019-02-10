@@ -24,20 +24,37 @@ public:
 
 public slots:
     void setFunction(const Function &f, double min, double max);
-    void setMarks(const QVector<QVector3D> &marks);
-    void setMarks(const Function &f, const std::vector<Vector> &marks);
+    void clearFunction();
+
+    void addMarkSet(const QVector<QVector3D> &marks);
+    void addMarkSet(const Function &f, const std::vector<Vector> &marks);
     void clearMarks();
 
+    void selectMarkSet(int index);
+
+    void clear();
+
 private:
-    static const int POINT_COUNT = 100;
+    using MarkSet = QVector<QCustom3DItem*>;
+
+    void showMarkSet(int index);
+    void hideMarkSet(int index);
+
+    static const int GRAPH_OFFEST = 10;
+    static const int MARK_COUNT = 100;
+    constexpr static const double MARK_SCALE = 0.02;
     static const QColor MARK_COLOR;
+    QImage m_markTexture;
 
     QVBoxLayout *m_layout;
+
+    QWidget *m_container;
 
     Q3DSurface *m_graph;
     QSurface3DSeries *m_dataSeries;
 
-    QVector<QVector3D> m_marks;
+    QList<MarkSet> m_markSets;
+    int m_selectedIndex;
 
 };
 

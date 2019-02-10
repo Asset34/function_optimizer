@@ -3,11 +3,11 @@
 #include <QDebug>
 
 GeneticAlgorithm::GeneticAlgorithm()
-    : m_iterations("Iterations", 0, 1e9, 100),
-      m_populationSize("Population size", 0, 1e9, 100),
-      m_selectionSize("Selection size", 0, 1e9, 90),
-      m_tournamentSize("Tournament size", 0, 1e9, 2),
-      m_mutationFactor("Mutation factor", 0.0, 1.0, 0.1),
+    : m_iterations("Iterations", 0, 1e9, 10),
+      m_populationSize("Population size", 0, 1e9, 10),
+      m_selectionSize("Selection size", 0, 1e9, 10),
+      m_tournamentSize("Tournament size", 0, 1e9, 3),
+      m_mutationFactor("Mutation factor", 0.0, 1.0, 0.01),
       m_leftBound("Left bound", -1e9, 1e9, -10.0),
       m_rightBound("Right bound", -1e9, 1e9, 10.0)
 {

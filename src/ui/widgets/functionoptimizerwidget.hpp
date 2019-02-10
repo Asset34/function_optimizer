@@ -3,12 +3,14 @@
 
 #include <QWidget>
 
+class QHBoxLayout;
 class QVBoxLayout;
 class QPushButton;
 class QFrame;
 class FunctionInputBox;
 class OptimizationAlgorithmWidget;
 class OptimizationResultWidget;
+class AlgorithmVisualizer;
 
 class FunctionOptimizerWidget : public QWidget
 {
@@ -21,7 +23,8 @@ public slots:
     void optimize();
 
 private:
-    QVBoxLayout *m_layout;
+    QHBoxLayout *m_mainLayout;
+    QVBoxLayout *m_algorithmLayout;
 
     QPushButton *m_optimizeButton;
 
@@ -30,6 +33,7 @@ private:
     FunctionInputBox *m_functionInputBox;
     OptimizationAlgorithmWidget *m_algorithmWidget;
     OptimizationResultWidget *m_resultWidget;
+    AlgorithmVisualizer *m_algorithmVisualizer;
 
 signals:
     void statusChanged(QString status);

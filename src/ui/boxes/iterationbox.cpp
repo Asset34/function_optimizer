@@ -11,9 +11,7 @@ IterationBox::IterationBox(int current, int max, QWidget *parent)
 {
     m_curIterationSpinBox = new QSpinBox;
     m_curIterationSpinBox->setValue(current);
-    m_curIterationSpinBox->setRange(1, max);
-//    m_curIterationLineEdit->setAlignment(Qt::AlignCenter);
-//    m_curIterationLineEdit->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
+    m_curIterationSpinBox->setRange(0, max);
 
     m_separator = new QLabel("/");
     m_maxIterationLabel = new QLabel(QString::number(m_max));
@@ -32,7 +30,7 @@ IterationBox::IterationBox(int current, int max, QWidget *parent)
         m_curIterationSpinBox,
         static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged),
         this,
-        &IterationBox::currentIterationChanged
+        &IterationBox::setCurrent
         );
 }
 
@@ -48,7 +46,7 @@ int IterationBox::getMax() const
 
 void IterationBox::setCurrent(int it)
 {
-    if (it > 0 && it <= m_max) {
+    if (it >= 0 && it <= m_max) {
         m_current = it;
         m_curIterationSpinBox->setValue(m_current);
 
@@ -59,6 +57,7 @@ void IterationBox::setCurrent(int it)
 void IterationBox::setMax(int max)
 {
     m_max = max;
+    m_curIterationSpinBox->setRange(0, max);
     m_maxIterationLabel->setText(QString::number(m_max));
 
     emit maxIterationChanged(max);
@@ -66,7 +65,7 @@ void IterationBox::setMax(int max)
 
 void IterationBox::first()
 {
-    setCurrent(1);
+    setCurrent(0);
 }
 
 void IterationBox::last()
@@ -76,14 +75,20 @@ void IterationBox::last()
 
 void IterationBox::next()
 {
-    if (m_current < m_max) {
-        setCurrent(m_current + 1);
-    }
+    setCurrent(m_current + 1);
 }
 
 void IterationBox::prev()
 {
-    if (m_current > 0) {
-        setCurrent(m_current - 1);
-    }
+    setCurrent(m_current - 1);
+}
+
+void IterationBox::clear()
+{
+    m_current = 0;
+    m_curIterationSpinBox->setValue(0);
+
+    m_max = 0;
+    m_curIterationSpinBox->setRange(0, 0);
+    m_maxIterationLabel->setText(QString::number(0));
 }

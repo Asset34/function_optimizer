@@ -1,9 +1,9 @@
 #include "functionoptimizerwidget.hpp"
 
+#include <QHBoxLayout>
 #include <QVBoxLayout>
 #include <QPushButton>
 #include <QFrame>
-
 
 #include <ui/boxes/functioninputbox.hpp>
 
@@ -12,11 +12,13 @@
 
 #include "optimizationalgorithmwidget.hpp"
 #include "optimizationresultwidget.hpp"
+#include "algorithmvisualizer.hpp"
 
 FunctionOptimizerWidget::FunctionOptimizerWidget(QWidget *parent)
     : QWidget(parent)
 {
     m_functionInputBox = new FunctionInputBox;
+    m_functionInputBox->setFixedWidth(200);
     m_functionInputBox->addExpression("2*x^2 + 3*exp(-x)");                                                 // (0.469150)
     m_functionInputBox->addExpression("2*x^2 - exp(x)");                                                    // (0.357403)
     m_functionInputBox->addExpression("(10*x^3 + 3*x^2 + x + 5)^2");                                        // (-0.859902)
@@ -37,27 +39,39 @@ FunctionOptimizerWidget::FunctionOptimizerWidget(QWidget *parent)
     m_functionInputBox->addExpression("(x1 - 1)^2 + (x2 - 3)^2 + 4*(x3 + 5)^2");                            // (1, 3, -5)
     m_functionInputBox->addExpression("3*(x1 - 4)^2 + 5*(x2 + 3)^2 + 7*(2*x3 + 1)^2");                      // (4, -3, -0.5)
 
-    m_resultWidget = new OptimizationResultWidget;
-
     m_algorithmWidget = new OptimizationAlgorithmWidget;
     m_algorithmWidget->addAlgorithm(std::unique_ptr<OptimizationAlgorithm>(new GeneticAlgorithm));
     m_algorithmWidget->addAlgorithm(std::unique_ptr<OptimizationAlgorithm>(new ParticleSwarm));
+    m_algorithmWidget->setFixedWidth(200);
+
+    m_resultWidget = new OptimizationResultWidget;
+    m_resultWidget->setFixedWidth(200);
 
     m_separator = new QFrame;
     m_separator->setFrameShape(QFrame::HLine);
     m_separator->setFrameShadow(QFrame::Raised);
+    m_separator->setFixedWidth(200);
 
     m_optimizeButton = new QPushButton("Optimize");
+    m_optimizeButton->setFixedWidth(200);
 
-    m_layout = new QVBoxLayout;
-    m_layout->setContentsMargins(0, 0, 0, 0);
-    m_layout->addWidget(m_functionInputBox);
-    m_layout->addWidget(m_algorithmWidget);
-    m_layout->addWidget(m_separator);
-    m_layout->addWidget(m_resultWidget);
-    m_layout->addWidget(m_optimizeButton);
+    m_algorithmLayout = new QVBoxLayout;
+    m_algorithmLayout->setContentsMargins(0, 0, 0, 0);
+    m_algorithmLayout->addWidget(m_functionInputBox);
+    m_algorithmLayout->addWidget(m_algorithmWidget);
+    m_algorithmLayout->addWidget(m_separator);
+    m_algorithmLayout->addWidget(m_resultWidget);
+    m_algorithmLayout->addWidget(m_optimizeButton);
 
-    setLayout(m_layout);
+    m_algorithmVisualizer = new AlgorithmVisualizer;
+    m_algorithmVisualizer->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+
+    m_mainLayout = new QHBoxLayout;
+    m_mainLayout->setContentsMargins(0, 0, 0, 0);
+    m_mainLayout->addLayout(m_algorithmLayout);
+    m_mainLayout->addWidget(m_algorithmVisualizer);
+
+    setLayout(m_mainLayout);
 
     connect(
         m_optimizeButton,
@@ -71,9 +85,15 @@ void FunctionOptimizerWidget::optimize()
 {
     emit statusChanged("Solving...");
 
-    Function function = m_functionInputBox->parseExpression();
-    OptimizationResult result = m_algorithmWidget->execute(function);
+    Function f = m_functionInputBox->parseExpression();
+    OptimizationResult result = m_algorithmWidget->execute(f);
     m_resultWidget->setResult(result);
+
+    m_algorithmVisualizer->clear();
+    if (f.getSize() == 2) {
+        m_algorithmVisualizer->setFunction(f, result.leftBound, result.rightBound);
+        m_algorithmVisualizer->setAlgorithmData(result.data);
+    }
 
     emit statusChanged("Success");
 }
