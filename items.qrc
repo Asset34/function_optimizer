@@ -1,5 +1,5 @@
 <RCC>
     <qresource prefix="/items">
-        <file alias="sphere.obj">res/sphere.obj</file>
+        <file alias="cube.obj">res/cube.obj</file>
     </qresource>
 </RCC>
