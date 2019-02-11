@@ -24,6 +24,7 @@ private:
 
     IntParameter m_iterations;
     IntParameter m_swarmSize;
+    RealParameter m_inertiaFactor;
     RealParameter m_cognitiveFactor;
     RealParameter m_socialFactor;
 

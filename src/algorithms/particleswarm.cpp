@@ -9,6 +9,7 @@ ParticleSwarm::ParticleSwarm()
       m_max("Max", -1e9, 1e9, 10),
       m_iterations("Iterations", 0, 1e9, 10),
       m_swarmSize("Swarm size", 0, 1e9, 10),
+      m_inertiaFactor("Inertia factor", 0.0, 1e9, 1.0),
       m_cognitiveFactor("Cognitive factor", -1e9, 1e9, 1.0),
       m_socialFactor("Social factor", -1e9, 1e9, 1.0)
 {
@@ -27,6 +28,7 @@ std::vector<Parameter*> ParticleSwarm::getParameters()
         &m_searchSpace,
         &m_iterations,
         &m_swarmSize,
+        &m_inertiaFactor,
         &m_cognitiveFactor,
         &m_socialFactor
     };
@@ -70,8 +72,11 @@ OptimizationResult ParticleSwarm::execute(const Function &f)
         r2 = RandomGenerator::generateDouble(0.0, 1.0);
         for (int j = 0; j < m_swarmSize; j++) {
             // Update velocity
-            velocities[j] += m_cognitiveFactor * r1 * (bestPositions[j] - positions[j])
-                          +  m_socialFactor * r2 * (swarmBestPosition - positions[j]);
+//            velocities[j] += m_cognitiveFactor * r1 * (bestPositions[j] - positions[j])
+//                          +  m_socialFactor * r2 * (swarmBestPosition - positions[j]);
+            velocities[j] = m_inertiaFactor * velocities[j]
+                          + m_cognitiveFactor * r1 * (bestPositions[j] - positions[j])
+                          + m_socialFactor * r2 * (swarmBestPosition - positions[j]);
 
             // Update position
             positions[j] += velocities[j];
