@@ -42,7 +42,7 @@ private:
 
     static const int GRAPH_OFFEST = 10;
     static const int MARK_COUNT = 100;
-    constexpr static const double MARK_SCALE = 0.02;
+    constexpr static const double MARK_SCALE = 0.015;
     static const QColor MARK_COLOR;
     QImage m_markTexture;
 
