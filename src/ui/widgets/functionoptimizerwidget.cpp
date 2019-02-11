@@ -18,7 +18,7 @@ FunctionOptimizerWidget::FunctionOptimizerWidget(QWidget *parent)
     : QWidget(parent)
 {
     m_functionInputBox = new FunctionInputBox;
-    m_functionInputBox->setFixedWidth(200);
+    m_functionInputBox->setFixedWidth(220);
     m_functionInputBox->addExpression("2*x^2 + 3*exp(-x)");                                                 // (0.469150)
     m_functionInputBox->addExpression("2*x^2 - exp(x)");                                                    // (0.357403)
     m_functionInputBox->addExpression("(10*x^3 + 3*x^2 + x + 5)^2");                                        // (-0.859902)
@@ -42,18 +42,18 @@ FunctionOptimizerWidget::FunctionOptimizerWidget(QWidget *parent)
     m_algorithmWidget = new OptimizationAlgorithmWidget;
     m_algorithmWidget->addAlgorithm(std::unique_ptr<OptimizationAlgorithm>(new GeneticAlgorithm));
     m_algorithmWidget->addAlgorithm(std::unique_ptr<OptimizationAlgorithm>(new ParticleSwarm));
-    m_algorithmWidget->setFixedWidth(200);
+    m_algorithmWidget->setFixedWidth(220);
 
     m_resultWidget = new OptimizationResultWidget;
-    m_resultWidget->setFixedWidth(200);
+    m_resultWidget->setFixedWidth(220);
 
     m_separator = new QFrame;
     m_separator->setFrameShape(QFrame::HLine);
     m_separator->setFrameShadow(QFrame::Raised);
-    m_separator->setFixedWidth(200);
+    m_separator->setFixedWidth(220);
 
     m_optimizeButton = new QPushButton("Optimize");
-    m_optimizeButton->setFixedWidth(200);
+    m_optimizeButton->setFixedWidth(220);
 
     m_algorithmLayout = new QVBoxLayout;
     m_algorithmLayout->setContentsMargins(0, 0, 0, 0);
