@@ -1,7 +1,5 @@
 #include "geneticalgorithm.hpp"
 
-#include <QDebug>
-
 GeneticAlgorithm::GeneticAlgorithm()
     : m_searchSpace("Search space"),
       m_min("Min", -1e9, 1e9, -10),

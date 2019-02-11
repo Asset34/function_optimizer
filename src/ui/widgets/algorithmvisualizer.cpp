@@ -5,8 +5,6 @@
 #include <ui/widgets/functiondrawer.hpp>
 #include <ui/widgets/iterationwidget.hpp>
 
-//#include <QDebug>
-
 AlgorithmVisualizer::AlgorithmVisualizer(QWidget *parent)
     : QWidget(parent)
 {
@@ -44,16 +42,6 @@ void AlgorithmVisualizer::setFunction(Function &f, double min, double max)
 
 void AlgorithmVisualizer::setAlgorithmData(const OptimizationData &data)
 {
-//    int i = 0;
-//    for (auto &set : data) {
-//        qDebug() << i << "-----------------------";
-//        for (auto &vec : set) {
-//            qDebug() << QString::fromStdString(vec.toString());
-//        }
-
-//        i++;
-//    }
-
     m_layout->removeWidget(m_functionDrawer);
     delete m_functionDrawer;
     m_functionDrawer = new FunctionDrawer;
@@ -62,7 +50,6 @@ void AlgorithmVisualizer::setAlgorithmData(const OptimizationData &data)
     m_layout->insertWidget(0, m_functionDrawer);
     m_functionDrawer->setFunction(m_function, m_min, m_max);
 
-//    m_functionDrawer->clearMarks();
     for (auto &set : data) {
         m_functionDrawer->addMarkSet(m_function, set);
     }

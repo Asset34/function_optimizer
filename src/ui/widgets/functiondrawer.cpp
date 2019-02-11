@@ -3,8 +3,6 @@
 #include <QVBoxLayout>
 #include <QtDataVisualization>
 
-#include <QDebug>
-
 const QColor FunctionDrawer::MARK_COLOR = Qt::black;
 
 FunctionDrawer::FunctionDrawer(QWidget *parent)
