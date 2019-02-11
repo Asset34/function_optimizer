@@ -122,11 +122,18 @@ Vector &Vector::operator-=(const Vector &vec)
 std::string Vector::toString() const
 {
     std::ostringstream ss;
-    ss << "(";
-    for (double value : m_values) {
-        ss << value << ", ";
+
+    if (getSize()) {
+        ss << "(";
+
+        ss << m_values[0];
+        for (int i = 1; i < getSize(); i++) {
+            ss << ", ";
+            ss << m_values[i];
+        }
+
+        ss << ")";
     }
-    ss << ")";
 
     return ss.str();
 }
