@@ -11,9 +11,10 @@ using OptimizationData = std::vector<std::vector<Vector>>;
 
 struct OptimizationResult
 {
+    double searchSpace_min;
+    double searchSpace_max;
+
     int iterations;
-    double leftBound;
-    double rightBound;
     Vector argument;
     double value;
     OptimizationData data;

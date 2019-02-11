@@ -5,6 +5,7 @@
 
 #include <parameterized_algorithm_qt/core/parameters/intparameter.hpp>
 #include <parameterized_algorithm_qt/core/parameters/realparameter.hpp>
+#include "parameterized_algorithm_qt/core/parameters/compositeparameter.hpp"
 
 class GeneticAlgorithm : public OptimizationAlgorithm
 {
@@ -21,13 +22,15 @@ private:
     class Chromosome;
     class Population;
 
+    CompositeParameter m_searchSpace;
+    RealParameter m_min;
+    RealParameter m_max;
+
     IntParameter m_iterations;
     IntParameter m_populationSize;
     IntParameter m_selectionSize;
     IntParameter m_tournamentSize;
     RealParameter m_mutationFactor;
-    RealParameter m_leftBound;
-    RealParameter m_rightBound;
 
 };
 

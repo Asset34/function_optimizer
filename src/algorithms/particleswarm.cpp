@@ -4,13 +4,16 @@
 #include <parser/Utility/vector.hpp>
 
 ParticleSwarm::ParticleSwarm()
-    : m_iterations("Iterations", 0, 1e9, 10),
+    : m_searchSpace("Search space"),
+      m_min("Min", -1e9, 1e9, -10),
+      m_max("Max", -1e9, 1e9, 10),
+      m_iterations("Iterations", 0, 1e9, 10),
       m_swarmSize("Swarm size", 0, 1e9, 10),
-      m_leftBound("Left bound", -1e9, 1e9, -10),
-      m_rightBound("Right bound", -1e9, 1e9, 10),
       m_cognitiveFactor("Cognitive factor", -1e9, 1e9, 1.0),
       m_socialFactor("Social factor", -1e9, 1e9, 1.0)
 {
+    m_searchSpace.addParameter(&m_min);
+    m_searchSpace.addParameter(&m_max);
 }
 
 std::string ParticleSwarm::getName() const
@@ -21,10 +24,9 @@ std::string ParticleSwarm::getName() const
 std::vector<Parameter*> ParticleSwarm::getParameters()
 {
     return {
+        &m_searchSpace,
         &m_iterations,
         &m_swarmSize,
-        &m_leftBound,
-        &m_rightBound,
         &m_cognitiveFactor,
         &m_socialFactor
     };
@@ -40,8 +42,8 @@ OptimizationResult ParticleSwarm::execute(const Function &f)
     std::vector<Vector> velocities(m_swarmSize, Vector(f.getSize()));
     std::vector<Vector> bestPositions(m_swarmSize, Vector(f.getSize()));
     for (int i = 0; i < m_swarmSize; i++) {
-        positions[i].generate(m_leftBound, m_rightBound);
-        velocities[i].generate(m_leftBound - m_rightBound, m_rightBound - m_leftBound);
+        positions[i].generate(m_min, m_max);
+        velocities[i].generate(m_min - m_max, m_max - m_min);
 
         bestPositions[i] = positions[i];
     }
@@ -88,9 +90,9 @@ OptimizationResult ParticleSwarm::execute(const Function &f)
     }
 
     return OptimizationResult {
+        .searchSpace_min = m_min,
+        .searchSpace_max = m_max,
         .iterations = m_iterations,
-        .leftBound = m_leftBound,
-        .rightBound = m_rightBound,
         .argument = swarmBestPosition,
         .value = f(swarmBestPosition),
         .data = data

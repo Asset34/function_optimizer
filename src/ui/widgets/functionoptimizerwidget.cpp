@@ -91,7 +91,7 @@ void FunctionOptimizerWidget::optimize()
 
     m_algorithmVisualizer->clear();
     if (f.getSize() == 2) {
-        m_algorithmVisualizer->setFunction(f, result.leftBound, result.rightBound);
+        m_algorithmVisualizer->setFunction(f, result.searchSpace_min, result.searchSpace_max);
         m_algorithmVisualizer->setAlgorithmData(result.data);
     }
 

@@ -5,6 +5,7 @@
 
 #include <parameterized_algorithm_qt/core/parameters/intparameter.hpp>
 #include <parameterized_algorithm_qt/core/parameters/realparameter.hpp>
+#include <parameterized_algorithm_qt/core/parameters/compositeparameter.hpp>
 
 class ParticleSwarm : public OptimizationAlgorithm
 {
@@ -17,10 +18,12 @@ public:
     virtual OptimizationResult execute(const Function &f) override;
 
 private:
+    CompositeParameter m_searchSpace;
+    RealParameter m_min;
+    RealParameter m_max;
+
     IntParameter m_iterations;
     IntParameter m_swarmSize;
-    RealParameter m_leftBound;
-    RealParameter m_rightBound;
     RealParameter m_cognitiveFactor;
     RealParameter m_socialFactor;
 
