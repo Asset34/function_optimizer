@@ -81,13 +81,6 @@ void GeneticAlgorithm::Population::generate(double min, double max)
     }
 }
 
-void GeneticAlgorithm::Population::generateGens(int index, double min, double max)
-{
-    for (Chromosome &ch : m_chromosomes) {
-        ch.generateGen(index, min, max);
-    }
-}
-
 void GeneticAlgorithm::Population::select(int size, int tournamentSize, const FitnessFunction &f)
 {
     std::vector<Chromosome> result(size);
@@ -121,14 +114,5 @@ void GeneticAlgorithm::Population::mutate(double chance, double min, double max)
 {
     for (Chromosome &ch : m_chromosomes) {
         ch.mutate(chance, min, max);
-    }
-}
-
-void GeneticAlgorithm::Population::mutateGens(double chance, int index, double min, double max)
-{
-    for (Chromosome &ch : m_chromosomes) {
-        if (RandomGenerator::generateAction(chance)) {
-            ch.mutateGen(index, min, max);
-        }
     }
 }

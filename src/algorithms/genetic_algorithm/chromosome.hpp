@@ -15,10 +15,7 @@ public:
     int getSize() const;
 
     void generate(double min, double max);
-    void generateGen(int index, double min, double max);
-
     void mutate(double chance, double min, double max);
-    void mutateGen(int index, double min, double max);
     static Chromosome crossover(const Chromosome &c1, const Chromosome &c2);
 
     const Vector &toVector() const;

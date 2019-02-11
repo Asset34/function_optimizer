@@ -29,23 +29,13 @@ void GeneticAlgorithm::Chromosome::generate(double min, double max)
     m_gens.generate(min, max);
 }
 
-void GeneticAlgorithm::Chromosome::generateGen(int index, double min, double max)
-{
-    m_gens.generateAt(index, min, max);
-}
-
 void GeneticAlgorithm::Chromosome::mutate(double chance, double min, double max)
 {
     for (int i = 0; i < m_gens.getSize(); i++) {
         if (RandomGenerator::generateAction(chance)) {
-            generateGen(i, min, max);
+            m_gens.generateAt(i, min, max);
         }
     }
-}
-
-void GeneticAlgorithm::Chromosome::mutateGen(int index, double min, double max)
-{
-    generateGen(index, min, max);
 }
 
 GeneticAlgorithm::Chromosome GeneticAlgorithm::Chromosome::crossover(
@@ -58,10 +48,10 @@ GeneticAlgorithm::Chromosome GeneticAlgorithm::Chromosome::crossover(
     Chromosome result(c1.getSize());
     for (int i = 0; i < c1.getSize(); i++) {
         if (c1[i] < c2[i]) {
-            result.generateGen(i, c1[i], c2[i]);
+            result.m_gens.generateAt(i, c1[i], c2[i]);
         }
         else {
-            result.generateGen(i, c2[i], c1[i]);
+            result.m_gens.generateAt(i, c2[i], c1[i]);
         }
     }
 
