@@ -64,13 +64,12 @@ OptimizationResult ParticleSwarm::execute(const Function &f)
         }
     );
 
-    Vector r1(m_swarmSize);
-    Vector r2(m_swarmSize);
+    double r1, r2;
     for (int i = 0; i < m_iterations; i++) {
+        r1 = RandomGenerator::generateDouble(0.0, 1.0);
+        r2 = RandomGenerator::generateDouble(0.0, 1.0);
         for (int j = 0; j < m_swarmSize; j++) {
             // Update velocity
-            r1.generate(0.0, 1.0);
-            r2.generate(0.0, 1.0);
             velocities[j] += m_cognitiveFactor * r1 * (bestPositions[j] - positions[j])
                           +  m_socialFactor * r2 * (swarmBestPosition - positions[j]);
 
