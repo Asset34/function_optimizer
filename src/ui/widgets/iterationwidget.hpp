@@ -33,8 +33,10 @@ private:
     QVBoxLayout *m_mainLayout;
     QHBoxLayout *m_buttonsLayout;
 
+    QPushButton *m_firstButton;
     QPushButton *m_nextButton;
     QPushButton *m_prevButton;
+    QPushButton *m_lastButton;
 
     IterationBox *m_iterationBox;
 
