@@ -38,6 +38,7 @@ FunctionOptimizerWidget::FunctionOptimizerWidget(QWidget *parent)
     m_functionInputBox->addExpression("0.1*(12 + x1^2 + (1 + x2^2)/x1^2 + (x1^2*x2^2 + 100)/(x1^4*x2^4))"); // (+-1.743, +-2.036)
     m_functionInputBox->addExpression("(x1 - 1)^2 + (x2 - 3)^2 + 4*(x3 + 5)^2");                            // (1, 3, -5)
     m_functionInputBox->addExpression("3*(x1 - 4)^2 + 5*(x2 + 3)^2 + 7*(2*x3 + 1)^2");                      // (4, -3, -0.5)
+    m_functionInputBox->addExpression("20 + (x1^2 - 10*cos(2*3.14 * x1)) + (x2^2 - 10*cos(2*3.14 * x2))");
 
     m_algorithmWidget = new OptimizationAlgorithmWidget;
     m_algorithmWidget->addAlgorithm(std::unique_ptr<OptimizationAlgorithm>(new GeneticAlgorithm));
